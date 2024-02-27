@@ -1,3 +1,5 @@
 *.exe
 
-.vscode/
+.vscode
+.vscode
+.vs
