@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999995 (TeX Live 2023) (preloaded format=xelatex 2024.3.6)  12 MAR 2024 20:00
+This is XeTeX, Version 3.141592653-2.6-0.999995 (TeX Live 2023) (preloaded format=xelatex 2024.3.6)  18 MAR 2024 12:57
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -762,7 +762,7 @@ LaTeX Font Warning: Font shape `TU/ptm/b/n' undefined
 
 [1
 
-] [2] [3] (./HW1.aux)
+] [2] [3] [4] [5] [6] [7] (./HW1.aux)
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
@@ -776,4 +776,4 @@ Here is how much of TeX's memory you used:
  1349 hyphenation exceptions out of 8191
  89i,6n,97p,338b,337s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on HW1.pdf (3 pages).
+Output written on HW1.pdf (7 pages).
