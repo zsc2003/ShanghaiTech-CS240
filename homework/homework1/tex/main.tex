@@ -1,0 +1,92 @@
+\documentclass{article}
+\usepackage{CJKutf8}
+\usepackage{graphicx}
+\usepackage{enumerate}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amsfonts}
+\usepackage{hyperref}
+\usepackage{subfigure}
+\usepackage{amsmath}  
+
+\usepackage{algorithm}  
+\usepackage{algpseudocode}  
+\usepackage{amsmath}  
+\renewcommand{\algorithmicrequire}{\textbf{Input:}}  % Use Input in the format of Algorithm  
+\renewcommand{\algorithmicensure}{\textbf{Output:}} % Use Output in the format of Algorithm    
+\usepackage{listings}
+\usepackage{url}
+
+\usepackage{etoolbox}
+\newtoggle{solution}
+% \toggletrue{solution}
+\togglefalse{solution}
+
+
+\usepackage{color}
+\usepackage[dvipsnames]{xcolor}
+\newcommand{\solution}[2][0pt]{\iftoggle{solution}{\smallskip{\color{red}{\flushleft\textbf{Solution}:}\par#2}}{\vspace*{#1}}}
+
+\renewcommand{\baselinestretch}{1.2}%Adjust Line Spacing
+%\geometry{left=2.0cm,right=2.0cm,top=2.0cm,bottom=2.0cm}% Adjust Margins of the File
+
+% Create horizontal rule command with an argument of height
+\newcommand{\horrule}[1]{\rule{\linewidth}{#1}}
+% Set the title here
+\title{
+    \normalfont \normalsize
+    \textsc{ShanghaiTech University} \\ [25pt]
+    \horrule{0.5pt} \\[0.4cm] % Thin top horizontal rule
+    \huge CS240 Algorithm Design and Analysis \\ % The assignment title
+    \LARGE Spring 2024\\
+    \LARGE Problem Set 1\\
+    \horrule{2pt} \\[0.5cm] % Thick bottom horizontal rule
+}
+% wrong usage of \author, never mind
+\author{}
+\date{Due: 23:59, March 28, 2024}
+
+% Add the support for auto numbering
+% use \problem{title} or \problem[number]{title} to add a new problem
+% also \subproblem is supported, just use it like \subsection
+\newcounter{ProblemCounter}
+\newcounter{oldvalue}
+\newcommand{\problem}[2][-1]{
+	\setcounter{oldvalue}{\value{secnumdepth}}
+	\setcounter{secnumdepth}{0}
+	\ifnum#1>0
+		\setcounter{ProblemCounter}{#1}
+	\else
+		\stepcounter{ProblemCounter}
+	\fi
+	\section{Problem \arabic{ProblemCounter}: #2}
+	\setcounter{secnumdepth}{\value{oldvalue}}
+}
+\newcommand{\subproblem}[1]{
+	\setcounter{oldvalue}{\value{section}}
+	\setcounter{section}{\value{ProblemCounter}}
+	\subsection{#1}
+	\setcounter{section}{\value{oldvalue}}
+}
+
+\begin{document}
+\maketitle
+\vspace{3ex}
+
+\begin{enumerate}
+%\item Please write your solutions in English. 
+\item Submit your solutions to the course Gradescope.
+\item If you want to submit a handwritten version, scan it clearly.
+\item Late homeworks submitted within 24 hours of the due date will be marked down 25\%.  Homeworks submitted more than 24 hours after the due date will not be accepted unless there is a valid reason, such as a medical or family emergency.  
+\item You are required to follow ShanghaiTech's academic honesty policies.  You are allowed to discuss problems with other students, but you must write up your solutions by yourselves.  You are not allowed to copy materials from other students or from online or published resources.  Violating academic honesty can result in serious penalties.  
+\end{enumerate}
+
+\newpage
+
+\input{p1.tex}  %slh
+\input{p2.tex}
+\input{p3.tex}  %slh
+\input{p4.tex}
+\input{p5.tex}  %zwq
+\input{p6.tex}  %zwq
+\end{document}
