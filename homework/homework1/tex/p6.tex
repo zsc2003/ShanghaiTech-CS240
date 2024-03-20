@@ -1,5 +1,5 @@
 \problem{}
-Suppose you have a graph with $n$ nodes.  Initially the graph contains no edges, and your task is to add a set of undirected edges to the graph so that for any pair of nodes $i$ and $j$, there is a path between $i$ and $j$ using at most 2 of the edges you added.  Give an algorithm to find a set of $O(n \log n)$ edges which satisfy this requirement.  
+Suppose you have a graph with $n$ nodes. Initially the graph contains no edges, and your task is to add a set of directed edges to the graph so that for any pair of nodes $i$ and $j$ where $i < j$, there is a path from $i$ to $j$ using at most 2 of the edges you added. You can only add edges of the form $(i,j)$ for $i < j$.  Give an algorithm to find a set of $O(n \log n)$ edges which satisfy this requirement.
 
 
 
