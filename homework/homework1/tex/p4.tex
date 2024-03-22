@@ -11,13 +11,25 @@ Suppose there are $n$ values in an array, and we want to sort the array using ``
 \noindent (b) Now suppose the array contains arbitrary values.   Design an algorithm which has $O(n \log^2 n)$ expected cost, and analyze its cost.  Note that your algorithm is allowed to make randomized choices. \\
 (Hint: quicksort, and the previous algorithm)
 
+\solution{}
 
+(a)
+    
+    
+    
+    
+    
+    
 
+(b) From each range $[a,b]$, we can select a random number, such as the first element in the range as the pivot.\\
+Then we can ragard the rest of the element, if the element $<$ pivot, set it into $1$, otherwise set it into $2$.\\
+Then the range $[a+1,b]$ is conbined by only $1$ and $2$. And we can sort them with the method in (a), and its cost is $O(n\log n)$, where $n$ is the length of the range.\\
 
+Others are same with the quicksort.
 
+So the cost is that $C(n)=C(i)+C(n-i-1)+O(n\log n)$, where $i$ is the number of numbers that are less than the pivot.\\
 
-
-
+So the expected cost is $O(n\log^2n)$.
 
 
 

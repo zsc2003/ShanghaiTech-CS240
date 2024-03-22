@@ -1,15 +1,18 @@
 \problem{}
+
+\solution{}
+
 Suppose you have a graph with $n$ nodes. Initially the graph contains no edges, and your task is to add a set of directed edges to the graph so that for any pair of nodes $i$ and $j$ where $i < j$, there is a path from $i$ to $j$ using at most 2 of the edges you added. You can only add edges of the form $(i,j)$ for $i < j$.  Give an algorithm to find a set of $O(n \log n)$ edges which satisfy this requirement.
 
+For a set of points, we can split them from the middle, and generate two new set of points $A,B$.\\
 
+Then we set edge from each points in $A$ to each points in $B$.\\
 
+For set $A,B$, recursively do the above steps.
 
+So the total number of connected edges $T(n)$ has the relation that 
+$$T(n)=2T(\dfrac{n}{2})+O(n)$$
 
-
-
-
-
-
-
+So $T(n)=n\log n$.\\
 
 \newpage
