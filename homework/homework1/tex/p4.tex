@@ -13,25 +13,44 @@ Suppose there are $n$ values in an array, and we want to sort the array using ``
 
 \solution{}
 
-(a)
-    
-    
-    
-    
-    
-    
+(a) Similarly to the process of merge sort, we firstly suppose that the array split from the middle, and get two ordered arraies, they we make sure the merged array is ordered.\\
+After split from the middle, we suppose the two small arraies are ordered. Since the array is combined with only $1$ and $2$, so there must has a line of demarcation to seperate $1$s and $2$s.
+And we flip the origin array from the left small array's demarcation line to the right small array's demarcation line.\\
+This would take the cost of $O(n)$, where $n$ is the length of the origin array.\\
+With this flip, the array must has a continously $1$s followed with continously $2$s, which means that the fliiped array is ordered. And we can just recursively repeat this process like merge sort.\\
+
+Then we can get the cost relationship: suppose the cost of sorting an array with length $n$ is $T(n)$, then we have
+$$T(n)=2T\left(\dfrac{n}{2}\right)+O(n)$$
+According to the Master Theorem, we can get that $T(n)=O(n\log n)$.\\
+So above all, we can sort this kind of arraies with cost $O(n\log n)$.
 
 (b) From each range $[a,b]$, we can select a random number, such as the first element in the range as the pivot.\\
-Then we can ragard the rest of the element, if the element $<$ pivot, set it into $1$, otherwise set it into $2$.\\
+Then we consider the rest of the element, if the element $<$ pivot, set it into $1$, otherwise set it into $2$.\\
 Then the range $[a+1,b]$ is conbined by only $1$ and $2$. And we can sort them with the method in (a), and its cost is $O(n\log n)$, where $n$ is the length of the range.\\
-
-Others are same with the quicksort.
-
 So the cost is that $C(n)=C(i)+C(n-i-1)+O(n\log n)$, where $i$ is the number of numbers that are less than the pivot.\\
+Suppose that the expected cost is $T(n)$, then we have
+\begin{align*}
+    T(n)  &= \sum_{i=0}^{n-1}\dfrac{1}{n}[T(i)+T(n-i-1)+O(n\log n)] \\
+    nT(n) &= 2\sum_{i=0}^{n-1}T(i) + O(n^2\log n)            \text{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (equation 1)} \\
+    (n-1)T(n-1) &= 2\sum_{i=0}^{n-2}T(i) + O((n-1)^2\log (n-1))      \text{\ \ \ (equation 2)}
+\end{align*}
+Let equation 1 minus equation 2, we have
+\begin{align*}
+    nT(n) &= (n+1)T(n-1) + O(n\log n)\\
+    \dfrac{T(n)}{n+1} &= \dfrac{T(n-1)}{n} + O(\dfrac{\log n}{n+1})\\
+    \dfrac{T(n-1)}{n} &= \dfrac{T(n-2)}{n-1} + O(\dfrac{\log (n-1)}{n}) = \dfrac{T(n-2)}{n-1} + O(\dfrac{\log n}{n})\\
+    \cdots\\
+    \dfrac{T(2)}{3} &= \dfrac{T(1)}{2} + O(\dfrac{\log 2}{3}) = \dfrac{T(1)}{2} + O(\dfrac{\log n}{3})
+\end{align*}
+Sum up these equations, we can get that
+$$\dfrac{T(n)}{n+1}=O\left[logn\cdot \sum_{i=3}^{n+1}\dfrac{1}{i}\right]$$
+From the knowledge of mathematics, we know that
+$$\sum_{i=1}^{n}\dfrac{1}{i}=\ln n + \gamma = O(\log n)$$
+So we have 
+$$\dfrac{T(n)}{n+1}=O(\log^2n)$$
+i.e.
+$$T(n)=O(n\log^2n)$$
 
-So the expected cost is $O(n\log^2n)$.
-
-
-
+So above all, we can get that the expected cost is $O(n\log^2n)$.
 
 \newpage

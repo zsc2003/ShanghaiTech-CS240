@@ -1,18 +1,29 @@
 \problem{}
 
-\solution{}
-
 Suppose you have a graph with $n$ nodes. Initially the graph contains no edges, and your task is to add a set of directed edges to the graph so that for any pair of nodes $i$ and $j$ where $i < j$, there is a path from $i$ to $j$ using at most 2 of the edges you added. You can only add edges of the form $(i,j)$ for $i < j$.  Give an algorithm to find a set of $O(n \log n)$ edges which satisfy this requirement.
 
-For a set of points, we can split them from the middle, and generate two new set of points $A,B$.\\
+\solution{}
 
-Then we set edge from each points in $A$ to each points in $B$.\\
 
-For set $A,B$, recursively do the above steps.
+For a set of points, we put the number of them $1,2,\cdots, n$ as an array $A$.
+we can split them from the middle, and generate two new set of points $L,R$.\\
+
+Then we set edge recursively:\\
+For the current array $A'$, we devide it from the middle, and take of the middle node of the array, named it the 'mid\_point'.\\
+The nodes before the mid\_point are array $L$, after if are array $R$.\\
+
+Then we set edges: $\forall i\in L$, we set a direct edge $i\to$ mid\_point, and $\forall j\in R$, we set a direct edge  mid\_point $\to j$.\\
+Then we recursively set edges for array $L$ and array $R$.\\
 
 So the total number of connected edges $T(n)$ has the relation that 
 $$T(n)=2T(\dfrac{n}{2})+O(n)$$
 
-So $T(n)=n\log n$.\\
+So according to the Master Theorem, we can get that $T(n)=O(n\log n)$.\\
+
+Correctneses:\\
+For each pair of node $i<j$, during the recursion, it must one time that $i,j\in A'$, but $i\in L, j\in R$, according to our policy, if $i$ or $j$ is the mid\_point, then there has an edge $i\to j$, otherwise, there exist edges that $i\to$mid\_point and mid\_point $\to j$.\\
+So each $i<j$, $i$ can using at most $2$ edges to $j$.\\
+
+So above all, we can find a set of $O(n\log n)$ edges to satisfy the requirement.
 
 \newpage
