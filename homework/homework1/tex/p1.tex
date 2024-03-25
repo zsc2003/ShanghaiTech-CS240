@@ -40,26 +40,26 @@ $$T(n) = 2^kT(n/2^k) + 2^k-1$$
 1. (1)Algorithm 1:\\
 The $i$-th loop runs $\log_{2}{n}$ times.\\
 Suppose $n=2^x$, i.e. $x=\log_{2}{n}$, then for the $j$-th loop and the $k$-th loop, the total computation is:
-$$\dfrac{1}{2}(2^x-0)+\sum_{j=0}^{x}\dfrac{1}{2}(2^x-2^j)=2^{x-1}+\dfrac{1}{2}(x+1)2^x-\dfrac{1}{2}(2^{x+1}-1)=O(x2^x)=O(n\log n)$$
+$$\dfrac{1}{2}(2^x-0)+\sum_{j=0}^{x}\dfrac{1}{2}(2^x-2^j)=2^{x-1}+\dfrac{1}{2}(x+1)2^x-\dfrac{1}{2}(2^{x+1}-1)=\Theta(x2^x)=\Theta(n\log n)$$
 Combine the $i$-th loop, the computation is
-$$\log n\cdot O(n\log n)=O(n\log^2 n)$$
-So above all, the total time complexity is $O(n\log_2^2{n})$.\\
+$$\log n\cdot \Theta(n\log n)=\Theta(n\log^2 n)$$
+So above all, the total time complexity is $\Theta(n\log_2^2{n})$.\\
 
 (2) Algorithm 2:\\
 The $i$-th loop runs $n+1$ times.\\
 Suppose $n=2^x$, i.e. $x=\log_{2}{n}$, then for the $j$-th loop and the $k$-th loop, the total computation is:
-$$\sum_{j=0}^{x}(2^j+1)=(2^{x+1}-1)+(x+1)=O(2^x)=O(n)$$
+$$\sum_{j=0}^{x}(2^j+1)=(2^{x+1}-1)+(x+1)=\Theta(2^x)=\Theta(n)$$
 Combine the $i$-th loop, the computation is
-$$(n+1)\cdot O(n)=O(n^2)$$
-So above all, the total time complexity is $O(n^2)$.\\
+$$(n+1)\cdot \Theta(n)=\Theta(n^2)$$
+So above all, the total time complexity is $\Theta(n^2)$.\\
 
-2. (1) Suppose $n=c\cdot k$, i.e. $c=\dfrac{n}{k}$, then we have
+2. (1) Suppose $n=c\cdot k$, i.e. $c=\dfrac{n}{k}$, and suppose $T(0)$ is a constant, then we have
 \begin{align*}
     T(ck) &= T[(c-1)k]+2k\\
     T[(c-1)k] &= T[(c-2)k]+2k\\
     &\cdots\\
     T(2k) &= T(k)+2k\\
-    T(k) &= T(0)+2k\\
+    T(k) &= T(0)+2k
 \end{align*}
 And all these equations, we have
 $$T(ck)=T(0)+c\cdot (2k)=O\left(\dfrac{n}{k}\cdot 2k\right)=O(n)$$
@@ -92,7 +92,8 @@ So above all, $T(n)=O(n\log n)$.\\
 
 \begin{align*}
     T(n) &= \sum_{i=0}^{\log_{(2^k)}{n}}(2^k)^i\cdot (2^k-1)\\
-         &= O((2^k-1)\cdot \dfrac{(2^k)^{\frac{1}{k}\log_{2}{n}}-1}{2^k-1})\\
+         &= O((2^k-1)\cdot \dfrac{(2^k)^{(\frac{1}{k}\log_{2}{n}+1)}-1}{2^k-1})\\
+         &= O(2^{\log_{2}{n}+k}-1)\\
          &= O(n)
 \end{align*}
 So above all, $T(n)=O(n)$.\\

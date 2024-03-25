@@ -4,7 +4,8 @@ Suppose you have two arrays each with $n$ values, and all the values are unique.
 \solution{}
 
 Suppose $n=2^k$.\\
-For the two arrays, $A,B$, to find the median, we can do following steps.
+For the two arrays, $A,B$, we first sort them to be the ascending order.\\
+Then to find the median, we can do following steps.
 \begin{itemize}
     \item 1. Query the $\frac{|A|}{2}$-th smallest element of $A$, set it to be $a$, and the $\frac{|B|}{2}$-th smallest element of $B$, set it to be $b$.
     \item 2. Split array $A$ into the left half and the right half, and so does array $B$.
@@ -14,13 +15,13 @@ For the two arrays, $A,B$, to find the median, we can do following steps.
     \end{itemize}
 \end{itemize}
 
-We can recursively following the step $1$ and step $2$ repeatively in $k$ times, where $k=\log_{2}{n}$.\\
-And the for the $k$'s comparison, it must has $|A|=|B|=2$, we take the second small number, and that number is the $n$-th smallest number of the two arrays.\\
+We can recursively following the step $1$ and step $2$ repeatively in $(k-1)$ times, where $k=\log_{2}{n}$.\\
+And the for the $k$'s comparison, it must has $|A|=|B|=2$, we take the second small number among the $4$ numbers, and that number is the $n$-th smallest number of the two arrays.\\
 
 Proof:\\
 For the $i$-th step, W.L.O.G, let $a<b$. Then the $n$-th smallest number must be bigger than $a$, but less than $b$, so the $n$-th smallest number must be on the right part of $A$, or the left part of $B$.\\
-And the number we take is the $\left[\left(\sum\limits_{i=1}^{k-1}2^i\right)+2=(n-2)+2=n\right]$-th smallest number.\\
-And we totally has $O(2k)=O(\log n)$ queries.\\
+And the number we take is the $\left[\left(\dfrac{1}{2}\sum\limits_{i=2}^{k}2^i\right)+2=(n-2)+2=n\right]$-th smallest number.\\
+And we totally has $O(2(k-1)+1)=O(\log n)$ queries.\\
 
 So above all, with $O(\log n)$ queries, we can find the median of the two arrays.\\
 
