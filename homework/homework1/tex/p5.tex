@@ -3,10 +3,10 @@ Suppose $n$ contestants will participate in a set of contests $G$.  In each cont
 
 \solution{}
 
-Given each contestant a number $1,2,3,\cdots,n$. We can do binary decomposition to each number.
-Suppose $n=2^k$, i.e. $k=\log_{2}{n}$. For the $i$-th contestant, the binary decomposition of $i$ is $b_{k-1}b_{k-2}\cdots b_0$.\\
+Given each contestant a number $0,1,2,3,\cdots,n$. We can do binary decomposition to each number.
+Suppose $n=2^k-1$, i.e. $k=\log_{2}{n-1}$. For the $i$-th contestant, the binary decomposition of $i$ is $b_{k-1}b_{k-2}\cdots b_0$.\\
 We totally set $k$ contests.
-For the $j$-th contest, if the $i$-th contestant has $b_j=0$, then we devide him into team $1$, otherwise team $2$.\\
+For the $j$-th contest($j=0,1,\cdots,k-1$), if the $i$-th contestant has $b_j=0$, then we devide him into team $1$, otherwise team $2$.\\
 So total $k=O(\log n)$ contests are hold, and each contestant must have at least one contest has different group with other contestants.\\
 
 Proof:
@@ -17,11 +17,11 @@ Proof:
     So all contestants must have at least one contest in different teams.
     \item minimize:\\
     Suppose that we totally has $t<k$ contests. Suppose the number of the contests are $0,1,\cdots, t-1$, then for each contest $i$, if the contestant $j$
-    is in team $1$, then we mark $j$'s $u$-th digit to be $0$, otherwise, mark it to be $1$.\\
+    is in team $1$, then we mark $j$'s $i$-th digit to be $0$, otherwise, mark it to be $1$.\\
     So with this marking policy, since each contestants has at least one contest in different teams, so their marked sequence must be different. We can regard each 
     sequence as a binary number, so each contestant is given a unique number.\\
-    But there are at most $2^t<2^k=n$ numbers, so it is impossible to has at least $t<k$ contests.\\
-    So $k=\log n$ is the minimized number of contests.
+    But there are at most $2^t-1<2^k-1=n$ numbers, so it is impossible to has at least $t<k$ contests.\\
+    So $k=\lceil\log n\rceil$ is the minimized number of contests.
 \end{itemize}
 
 So above all, the minimized total number of contests $|G|$ is $\lceil\log n\rceil$.\\

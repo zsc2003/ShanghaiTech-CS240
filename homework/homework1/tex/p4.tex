@@ -13,20 +13,22 @@ Suppose there are $n$ values in an array, and we want to sort the array using ``
 
 \solution{}
 
-(a) Similarly to the process of merge sort, we firstly suppose that the array split from the middle, and get two ordered arraies, they we make sure the merged array is ordered.\\
+(a) Similarly to the process of merge sort, we firstly suppose that the array split from the middle, and get two ordered arraies, then we make sure the merged array is ordered.\\
 After split from the middle, we suppose the two small arraies are ordered. Since the array is combined with only $1$ and $2$, so there must has a line of demarcation to seperate $1$s and $2$s.
-And we flip the origin array from the left small array's demarcation line to the right small array's demarcation line.\\
+And we flip the origin array from the left small array's demarcation line(right side, i.e. the first $2$) to the right small array's demarcation line(left size, i.e. the last $1$).\\
 This would take the cost of $O(n)$, where $n$ is the length of the origin array.\\
-With this flip, the array must has a continously $1$s followed with continously $2$s, which means that the fliiped array is ordered. And we can just recursively repeat this process like merge sort.\\
+With this flip, the array must has a continously $1$s followed with continously $2$s, which means that the flipped array is ordered. And we can just recursively repeat this process like merge sort.\\
 
 Then we can get the cost relationship: suppose the cost of sorting an array with length $n$ is $T(n)$, then we have
 $$T(n)=2T\left(\dfrac{n}{2}\right)+O(n)$$
 According to the Master Theorem, we can get that $T(n)=O(n\log n)$.\\
 So above all, we can sort this kind of arraies with cost $O(n\log n)$.
 
-(b) From each range $[a,b]$, we can select a random number, such as the first element in the range as the pivot.\\
+(b) We do this similarly to the quicksort. For each range $[a,b]$, we can select a random number, such as the first element in the range as the pivot.\\
 Then we consider the rest of the element, if the element $<$ pivot, set it into $1$, otherwise set it into $2$.\\
-Then the range $[a+1,b]$ is conbined by only $1$ and $2$. And we can sort them with the method in (a), and its cost is $O(n\log n)$, where $n$ is the length of the range.\\
+Then the range $[a+1,b]$ is conbined by only $1$ and $2$. And we can sort them with the method in (a), and its cost is $O(n\log n)$, where $n$ is the length of the range. Suppose the boarder line of $1$s and $2$s are at index $a+i$(i.e. the number of numbers that are less than the pivot is $i$). 
+Then we flip the range $[a,i]$ to make sure all element less than the pivot are at the left of the pivot, and all element greater than the pivot are at the right of the pivot. This will cost $O(n)$, so the total cost during the step is $O(n\log n)$.\\
+Then we recursively do this to the left part and the right part.\\
 So the cost is that $C(n)=C(i)+C(n-i-1)+O(n\log n)$, where $i$ is the number of numbers that are less than the pivot.\\
 Suppose that the expected cost is $T(n)$, then we have
 \begin{align*}
