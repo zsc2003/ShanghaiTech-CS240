@@ -5,18 +5,25 @@ A thief is planning to rob houses along a street. Each house has a certain amoun
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
+\begin{algorithm}
+    \caption{Contests}\label{alg:problem-3}
+    \begin{algorithmic}[1]
+    \State \textbf{Input:} $n$ contestants.
+    \State \textbf{Output:} A set of contests $G$.
+    \State $l \gets$ \Call{BitLength}{$n$}
+    \For{$\text{CurrentBit} \gets 0$ \textbf{to} $l$}
+        \State $Team_1 \gets \{\}$, $Team_2 \gets \{\}$
+        \For{$c \gets 0$ \textbf{to} $n$}
+            \If{\Call{GetBit}{$c$, $\text{CurrentBit}$} $= 0$}
+                \State $Team_1$.\Call{add}{$c$}
+            \Else
+                \State $Team_2$.\Call{add}{$c$}
+            \EndIf
+        \EndFor
+        \State $G$.\Call{add}{$Team_1$, $Team_2$}
+    \EndFor
+    \end{algorithmic}
+\end{algorithm}
 
 
 
