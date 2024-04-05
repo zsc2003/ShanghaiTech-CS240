@@ -7,8 +7,24 @@ Consider a weighted directed graph $G$ with $n$ vertices and $m$ edges, where ea
 
 
 
-
-
+For loop in the pseudo-code is form `$\textbf{for } i \gets 1 \textbf{ to } n$' represents $i=1,2,\cdots,n$ sequentially.
+\begin{algorithm}
+    \caption{Number of different walks}\label{alg:problem-6}
+    \begin{algorithmic}[1]
+    \State \textbf{Input:} Graph $G=(V,E)$ with $n$ vertices and $m$ edges with weight $w_{i,j}$
+    \State \textbf{Output:} The number of different walks from $s$ to $t$ with length $L$
+    
+    \State $dp(s,0) \gets 1$
+    \State $dp(x,t) \gets 0, \forall (x,t)\neq (s,0)$
+    
+    \For{$val \gets 1$ \textbf{to} $L$}
+        \For{$(i, j)\in E$}
+            \State $dp(j,val) \gets dp(j,val)+dp(i, val-w_{i,j})$
+        \EndFor
+    \EndFor
+    \State \textbf{return} $dp(t,L)$
+    \end{algorithmic}
+\end{algorithm}
 
 
 

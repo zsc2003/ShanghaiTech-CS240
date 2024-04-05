@@ -5,23 +5,19 @@ A thief is planning to rob houses along a street. Each house has a certain amoun
 
 
 
+For loop in the pseudo-code is form `$\textbf{for } i \gets 1 \textbf{ to } n$' represents $i=1,2,\cdots,n$ sequentially.
 \begin{algorithm}
-    \caption{Contests}\label{alg:problem-3}
+    \caption{Maximum stolen money}\label{alg:problem-3}
     \begin{algorithmic}[1]
-    \State \textbf{Input:} $n$ contestants.
-    \State \textbf{Output:} A set of contests $G$.
-    \State $l \gets$ \Call{BitLength}{$n$}
-    \For{$\text{CurrentBit} \gets 0$ \textbf{to} $l$}
-        \State $Team_1 \gets \{\}$, $Team_2 \gets \{\}$
-        \For{$c \gets 0$ \textbf{to} $n$}
-            \If{\Call{GetBit}{$c$, $\text{CurrentBit}$} $= 0$}
-                \State $Team_1$.\Call{add}{$c$}
-            \Else
-                \State $Team_2$.\Call{add}{$c$}
-            \EndIf
-        \EndFor
-        \State $G$.\Call{add}{$Team_1$, $Team_2$}
+    \State \textbf{Input:} Number of house $n$, each house's money number $a_1, a_2, \cdots, a_n$. 
+    \State \textbf{Output:} The maximum number of money could steal $ans$.
+    \State $dp(1,0) \gets 0, dp(1,1)\gets a_1$
+    \For{$i \gets 2$ \textbf{to} $n$}
+        \State $dp(i,0) \gets \max\{dp(i-1,0),dp(i-1,1)\}$
+        \State $dp(i,0) \gets dp(i-1,0)+a_i$
     \EndFor
+    \State $ans \gets \max\{dp(n,0),dp(n,1)\}$
+    \State \textbf{return} $ans$
     \end{algorithmic}
 \end{algorithm}
 

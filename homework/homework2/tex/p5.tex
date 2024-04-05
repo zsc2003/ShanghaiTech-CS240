@@ -18,7 +18,43 @@ Give a dynamic programming algorithm to solve this problem. Describe your algori
 
 
 
+For loop in the pseudo-code is form `$\textbf{for } i \gets 1 \textbf{ to } n$' represents $i=1,2,\cdots,n$ sequentially.
+\begin{algorithm}
+    \caption{Number of True Statements}\label{alg:problem-5}
+    \begin{algorithmic}[1]
+    \State \textbf{Input:} Number of propositions $n$, propositions $a_1,a_2,\cdots,a_n$, operators $b_1,b_2,\cdots,b_{n-1}$
+    \State \textbf{Output:} The number of True Statements
 
+    \For{$i \gets 1$ \textbf{to} $n$}
+        \State $dp(i,i,a_i) \gets 1$
+        \State $dp(i,i,\neg a_i) \gets 0$
+    \EndFor
+    
+    \For{$i \gets 1$ \textbf{to} $n$}
+        \For{$j \gets i+1$ \textbf{to} $n$}
+            \For{$k \gets i$ \textbf{to} $j-1$}
+                \If{$b_i == \land$}
+                    \State $dp(i,j,0) \gets dp(i,k,0) * dp(k+1,j,0)$
+                    \Statex $\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\  +\ dp(i,k,0) * dp(k+1,j,1)$
+                    \Statex $\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\  +\ dp(i,k,1) * dp(k+1,j,0)$
+                    
+                    \State $dp(i,j,1) \gets dp(i,k,1)*dp(k+1,j,1)$
+                \Else
+                    \State $dp(i,j,0) \gets dp(i,k,0) * dp(k+1,j,0)$
+                    
+                    \State $dp(i,j,1) \gets dp(i,k,1)*dp(k+1,j,1)$
+                    \Statex $\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\  +\ dp(i,k,0) * dp(k+1,j,1)$
+                    \Statex $\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\  +\ dp(i,k,1) * dp(k+1,j,0)$
+                    
+                    \EndIf
+            \EndFor
+        \EndFor
+    \EndFor
+
+
+    \State \textbf{return} $dp(1,n,1)$
+    \end{algorithmic}
+\end{algorithm}
 
 
 
