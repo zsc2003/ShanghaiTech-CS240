@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999995 (TeX Live 2023) (preloaded format=xelatex 2024.3.6)  5 APR 2024 21:48
+This is XeTeX, Version 3.141592653-2.6-0.999995 (TeX Live 2023) (preloaded format=xelatex 2024.3.6)  6 APR 2024 23:09
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -474,16 +474,36 @@ LaTeX Font Info:    Trying to load font information for U+msb on input line 74.
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ) [1
 
-] (./p1.tex [2]) (./p2.tex [3]) (./p3.tex
-Package hyperref Info: bookmark level for unknown algorithm defaults to 0 on input line 10.
+] (./p1.tex
+Underfull \hbox (badness 10000) in paragraph at lines 18--21
 
-Overfull \hbox (1.74677pt too wide) in paragraph at lines 8--23
+ []
+
+[2]) (./p2.tex
+Underfull \hbox (badness 10000) in paragraph at lines 19--22
+
+ []
+
+[3]) (./p3.tex
+Package hyperref Info: bookmark level for unknown algorithm defaults to 0 on input line 15.
+
+Overfull \hbox (1.74677pt too wide) in paragraph at lines 13--28
 []\TU/lmr/m/n/10 For loop in the pseudo-code is form ‘$[]\OML/cmm/m/it/10 i \OMS/cmsy/m/n/10   \OT1/cmr/m/n/10 1[]\OML/cmm/m/it/10 n$\TU/lmr/m/n/10 ’ represents $\OML/cmm/m/it/10 i \OT1/cmr/m/n/10 = 1\OML/cmm/m/it/10 ; \OT1/cmr/m/n/10 2\OML/cmm/m/it/10 ; []  ; n$
  []
 
+
+Underfull \hbox (badness 10000) in paragraph at lines 29--32
+
+ []
+
 [4]) (./p4.tex
-Overfull \hbox (1.74677pt too wide) in paragraph at lines 12--51
+Overfull \hbox (1.74677pt too wide) in paragraph at lines 15--54
 []\TU/lmr/m/n/10 For loop in the pseudo-code is form ‘$[]\OML/cmm/m/it/10 i \OMS/cmsy/m/n/10   \OT1/cmr/m/n/10 1[]\OML/cmm/m/it/10 n$\TU/lmr/m/n/10 ’ represents $\OML/cmm/m/it/10 i \OT1/cmr/m/n/10 = 1\OML/cmm/m/it/10 ; \OT1/cmr/m/n/10 2\OML/cmm/m/it/10 ; []  ; n$
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 55--58
+
  []
 
 [5] [6]) (./p5.tex
@@ -491,19 +511,29 @@ Overfull \hbox (1.74677pt too wide) in paragraph at lines 21--58
 []\TU/lmr/m/n/10 For loop in the pseudo-code is form ‘$[]\OML/cmm/m/it/10 i \OMS/cmsy/m/n/10   \OT1/cmr/m/n/10 1[]\OML/cmm/m/it/10 n$\TU/lmr/m/n/10 ’ represents $\OML/cmm/m/it/10 i \OT1/cmr/m/n/10 = 1\OML/cmm/m/it/10 ; \OT1/cmr/m/n/10 2\OML/cmm/m/it/10 ; []  ; n$
  []
 
+
+Underfull \hbox (badness 10000) in paragraph at lines 59--62
+
+ []
+
 [7] [8]) (./p6.tex
 Overfull \hbox (1.74677pt too wide) in paragraph at lines 10--28
 []\TU/lmr/m/n/10 For loop in the pseudo-code is form ‘$[]\OML/cmm/m/it/10 i \OMS/cmsy/m/n/10   \OT1/cmr/m/n/10 1[]\OML/cmm/m/it/10 n$\TU/lmr/m/n/10 ’ represents $\OML/cmm/m/it/10 i \OT1/cmr/m/n/10 = 1\OML/cmm/m/it/10 ; \OT1/cmr/m/n/10 2\OML/cmm/m/it/10 ; []  ; n$
  []
 
-) [9] (./main.aux)
+)
+Underfull \hbox (badness 10000) in paragraph at lines 29--92
+
+ []
+
+[9] (./main.aux)
 Package rerunfilecheck Info: File `main.out' has not changed.
 (rerunfilecheck)             Checksum: D19061D996EB016DD43DA58FE1147384;630.
  ) 
 Here is how much of TeX's memory you used:
  13092 strings out of 476683
  199507 string characters out of 5807576
- 1855012 words of memory out of 5000000
+ 1856012 words of memory out of 5000000
  33109 multiletter control sequences out of 15000+600000
  519119 words of font info for 75 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
