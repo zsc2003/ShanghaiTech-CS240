@@ -3,13 +3,20 @@ Consider a weighted directed graph $G$ with $n$ vertices and $m$ edges, where ea
 
 \solution{}
 
+Let $dp(x, val)$ to be the number of different walks from $s$ to $x$ with length $val$.\\
+Where $x$ is a vertex in the graph.\\
+The initial condition is set to be $dp(s,0)=1$, and $dp(x,t)=0, \forall (x,t)\neq (s,0)$.\\
+Then we have the following recursive formula:\\
+For each edge $(i,j)\in E$, then the number of different walks from $s$ to $j$ with length $val$ is the sum of the number of different walks from $s$ to $i$ with length $val-w_{i,j}$.\\
+So we have the following recursive formula:
+$$dp(j,val) = dp(j,val)+dp(i, val-w_{i,j})$$
+Then we just need to take every edge into consideration, and update the 
 
 
-
-
-For loop in the pseudo-code is form `$\textbf{for } i \gets 1 \textbf{ to } n$' represents $i=1,2,\cdots,n$ sequentially.
+The pseudo-code is shown in Algorithm \ref{alg:problem-6}.\\
+For loop in the pseudo-code in form `$\textbf{for } i \gets 1 \textbf{ to } n$' represents $i=1,2,\cdots,n$ sequentially.
 \begin{algorithm}
-    \caption{Number of different walks}\label{alg:problem-6}
+    \caption{Number of different walks}
     \begin{algorithmic}[1]
     \State \textbf{Input:} Graph $G=(V,E)$ with $n$ vertices and $m$ edges with weight $w_{i,j}$
     \State \textbf{Output:} The number of different walks from $s$ to $t$ with length $L$
@@ -24,8 +31,8 @@ For loop in the pseudo-code is form `$\textbf{for } i \gets 1 \textbf{ to } n$' 
     \EndFor
     \State \textbf{return} $dp(t,L)$
     \end{algorithmic}
-\end{algorithm}
-
+    \label{alg:problem-6}
+\end{algorithm}\\
 The time complexity is $O(mL)$.\\
-The space complexity is $O(nL)$.\\
+The space complexity is $O(nL+m)$.\\
 Where $n$ is the number of vertices, $m$ is the number of edges, $L$ is the length of the walk.\\

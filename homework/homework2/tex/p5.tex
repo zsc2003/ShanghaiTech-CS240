@@ -1,26 +1,70 @@
 \problem{}
-Suppose you are given a propositional logic formula containing only the terms $\land$, $\lor$, $\text{T}$ and $\text{F}$, without any parentheses. You want to find out how many different ways there are to correctly parenthesize the formula so that the resulting formula evaluates to true. For example, the formula $\text{T} \lor \text{F} \lor \text{T} \lor \text{F}$ can be correctly parenthesized in 5 ways:
+Suppose you are given a propositional logic formula containing only the terms $\land$, $\lor$, $\text{T}$ and $\text{F}$, without any parentheses. You want to find out how many different ways there are to correctly parenthesize the formula so that the resulting formula evaluates to true. For example, the formula $\text{T} \lor \text{F} \lor \text{T} \land \text{F}$ can be correctly parenthesized in 5 ways:
 \begin{center}
-$(\text{T} \lor (\text{F} \lor (\text{T} \lor \text{F})))$ \\
-$(\text{T} \lor ((\text{F} \lor \text{T}) \lor \text{F}))$ \\
-$((\text{T} \lor \text{F}) \lor (\text{T} \lor \text{F}))$ \\
-$(((\text{T} \lor \text{F}) \lor \text{T}) \lor \text{F})$ \\
-$((\text{T} \lor (\text{F} \lor \text{T})) \lor \text{F})$
+$(\text{T} \lor (\text{F} \lor (\text{T} \land \text{F})))$ \\
+$(\text{T} \lor ((\text{F} \lor \text{T}) \land \text{F}))$ \\
+$((\text{T} \lor \text{F}) \lor (\text{T} \land \text{F}))$ \\
+$(((\text{T} \lor \text{F}) \lor \text{T}) \land \text{F})$ \\
+$((\text{T} \lor (\text{F} \lor \text{T})) \land \text{F})$
 \end{center}
-Of these, 3 evaluate to true: $((\text{T} \lor \text{F}) \lor (\text{T} \lor \text{F}))$, $(\text{T} \lor ((\text{F} \lor \text{T}) \lor \text{F}))$ and $(\text{T} \lor (\text{F} \lor (\text{T} \lor \text{F})))$.
+Of these, 3 evaluate to true: $((\text{T} \lor \text{F}) \lor (\text{T} \land \text{F}))$, $(\text{T} \lor ((\text{F} \lor \text{T}) \land \text{F}))$ and $(\text{T} \lor (\text{F} \lor (\text{T} \land \text{F})))$.
 
 Give a dynamic programming algorithm to solve this problem. Describe your algorithm, including a clear statement of your dynamic programming equation, show that it is correct, and prove its running time.
 
 \solution{}
 
+Let $dp(i,j,val)$ be the number of ways to parenthesize the formula $a_i,a_{i+1},\cdots,a_j$ so that the resulting formula evaluates to $val$.\\
+Let operator$(k)$ be the operator between $a_k$ and $a_{k+1}$.\\
+Where $a_i,a_{i+1},\cdots,a_j$ is a subsequence of the original formula.\\
+
+The initial condition is set to be $dp(i,i,a_i)=1$, and $dp(i,i,\neg a_i)=0$.\\
+And other state are set to be $0$.
+
+So we have the following recursive formula:
+For an interval $[i,j](i\neq j)$, then it could be seperated into two parts $[i,k]$ and $[k+1,j]$, where $k\in[i,j-1]$.\\
+Then we have the following recursive formula:
+If we want the formula in the interval $[i,j]$ to evaluate to $0$, then we have the following cases:
+\begin{itemize}
+    \item If operator$(k) == \land$, then the formula in the interval $[i,j]$ evaluates to $0$ if and only if at least one interval $[i,k]$ or $[k+1,j]$ evaluates to $0$.
+    \item If operator$(k) == \lor$, then the formula in the interval $[i,j]$ evaluates to $0$ if and only if the formula in the interval $[i,k]$ evaluates to $0$ and the formula in the interval $[k+1,j]$ evaluates to $0$.
+\end{itemize}
+
+If we want the formula in the interval $[i,j]$ to evaluate to $1$, then we have the following cases:
+\begin{itemize}
+    \item If operator$(k) == \land$, then the formula in the interval $[i,j]$ evaluates to $1$ if and only if the formula in the interval $[i,k]$ evaluates to $1$ and the formula in the interval $[k+1,j]$ evaluates to $1$.
+    \item If operator$(k) == \lor$, then the formula in the interval $[i,j]$ evaluates to $1$ if and only if at least one interval $[i,k]$ or $[k+1,j]$ evaluates to $1$.
+\end{itemize}
+
+So the dynamic programming equation is:
+\begin{equation}
+    \begin{aligned}
+        dp(i,j,0) &= \sum_{k=i}^{j-1} \left\{
+            \begin{array}{ll}
+                &\ \ \ dp(i,k,0) * dp(k+1,j,0) \\
+                &+\ dp(i,k,0) * dp(k+1,j,1) \\
+                &+\ dp(i,k,1) * dp(k+1,j,0) \ \ \ \text{if operator} (k) == \land\\
+                &\ \ \ dp(i,k,0) * dp(k+1,j,0) \ \ \ \text{if operator} (k) == \lor
+            \end{array}
+        \right.\\
+        dp(i,j,1) &= \sum_{k=i}^{j-1} \left\{
+            \begin{array}{ll}
+                &\ \ \ dp(i,k,0) * dp(k+1,j,1) \\
+                &+\ dp(i,k,1) * dp(k+1,j,0) \\
+                &+\ dp(i,k,1) * dp(k+1,j,1) \ \ \ \text{if operator} (k) == \lor\\
+                &\ \ \ dp(i,k,1) * dp(k+1,j,1) \ \ \ \text{if operator} (k) == \land
+            \end{array}
+        \right.
+    \end{aligned}
+\end{equation}
+    
+    Finally, the answer is $dp(1,n,1)$. As we want the whole formula to evaluate to $1$.\\
 
 
 
-
-
-For loop in the pseudo-code is form `$\textbf{for } i \gets 1 \textbf{ to } n$' represents $i=1,2,\cdots,n$ sequentially.
+The pseudo-code is shown in Algorithm \ref{alg:problem-5}.\\
+For loop in the pseudo-code in form `$\textbf{for } i \gets 1 \textbf{ to } n$' represents $i=1,2,\cdots,n$ sequentially.
 \begin{algorithm}
-    \caption{Number of True Statements}\label{alg:problem-5}
+    \caption{Number of True Statements}
     \begin{algorithmic}[1]
     \State \textbf{Input:} Number of propositions $n$, propositions $a_1,a_2,\cdots,a_n$, operators $b_1,b_2,\cdots,b_{n-1}$
     \State \textbf{Output:} The number of True Statements
@@ -44,18 +88,17 @@ For loop in the pseudo-code is form `$\textbf{for } i \gets 1 \textbf{ to } n$' 
                     
                     \State $dp(i,j,1) \gets dp(i,k,1)*dp(k+1,j,1)$
                     \Statex $\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\  +\ dp(i,k,0) * dp(k+1,j,1)$
-                    \Statex $\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\  +\ dp(i,k,1) * dp(k+1,j,0)$
+                    \Statex $\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\  +\ dp(i,k,1) * dp(k+1,j,1)$
                     
                     \EndIf
             \EndFor
         \EndFor
     \EndFor
 
-
     \State \textbf{return} $dp(1,n,1)$
     \end{algorithmic}
-\end{algorithm}
-
+    \label{alg:problem-5}
+\end{algorithm}\\
 The time complexity is $O(n^3)$.\\
 The space complexity is $O(n^2)$.\\
 Where $n$ is the number of propositions.\\

@@ -3,16 +3,24 @@ A thief is planning to rob houses along a street. Each house has a certain amoun
 
 \solution{}
 
+Let $dp(i,0)$ be the maximum amount of money the thief can steal from the first $i$ houses without robbing the $i$-th house, and $dp(i,1)$ be the maximum amount of money the thief can steal from the first $i$ houses with robbing the $i$-th house.
 
+For the initial condition, we have $dp(1,0)=0$ and $dp(1,1)=a_1$. As if the theif do not steal from the first house, he would get no money, and if he steals from the first house, he would get $a_1$ money.\\
+And other states are set to be $0$.
 
+Then we have the following recursive formula:
 
+If the theif does not steal from the $i$-th house, he can decide whether to steal from the $(i-1)$-th house or not. So he just need to make the optimal choice,
+i.e. $dp(i,0)=\max\{dp(i-1,0),dp(i-1,1)\}$.
 
+If the theif steals from the $i$-th house, he must not steal from the $(i-1)$-th house. i.e. $dp(i,1)=dp(i-1,0)+a_i$.
 
+Finally, the maximum amount of money the thief can steal is $\max\{dp(n,0),dp(n,1)\}$.\\
+As he can choose to steal from the $n$-th house or not. And the final decision is the maximum amount of money he can steal from the first $n$ houses.
 
-
-For loop in the pseudo-code is form `$\textbf{for } i \gets 1 \textbf{ to } n$' represents $i=1,2,\cdots,n$ sequentially.
+The pseudo-code is shown in Algorithm \ref{alg:problem-3}. For loop in the pseudo-code in form `$\textbf{for } i \gets 1 \textbf{ to } n$' represents $i=1,2,\cdots,n$ sequentially.
 \begin{algorithm}
-    \caption{Maximum stolen money}\label{alg:problem-3}
+    \caption{Maximum stolen money}
     \begin{algorithmic}[1]
     \State \textbf{Input:} Number of house $n$, each house's money number $a_1, a_2, \cdots, a_n$. 
     \State \textbf{Output:} The maximum number of money could steal $ans$.
@@ -24,8 +32,8 @@ For loop in the pseudo-code is form `$\textbf{for } i \gets 1 \textbf{ to } n$' 
     \State $ans \gets \max\{dp(n,0),dp(n,1)\}$
     \State \textbf{return} $ans$
     \end{algorithmic}
-\end{algorithm}
-
+    \label{alg:problem-3}
+\end{algorithm}\\
 The time complexity is $O(n)$.\\
 The space complexity is $O(n)$.\\
 Where $n$ is the number of houses.\\

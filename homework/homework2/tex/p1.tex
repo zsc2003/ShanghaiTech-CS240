@@ -2,21 +2,32 @@
 Suppose you are given a set of intervals $I_1 = [s_1, t_1], \ldots, I_n = [s_n, t_n]$, which can possibly overlap.  Your task is to select a set of points $p_1, \ldots, p_m$ so that each interval intersects at least one of the points.  Give an algorithm to minimize the number of selected points $m$, and prove that your algorithm is optimal.
 
 \solution{}
+We can sort the intervals by the each interval's end point $t_i$.\\
+And then traverse all intervals in the order we sorted:\\
+1. If the interval is intersected by the selected points, then we do nothing.\\
+2. If no intersection, then we add a point at the end of the interval $t_i$.
 
+Proof correctness:\\
+Suppose $p_1, \ldots, p_m$ is the set of points of our algorithm's selection.\\
+And $q_1, \ldots, q_r$ is the set of points of the optimal selection.\\
+Suppose $p_1=q_1, \cdots, p_t=q_r$ with the largest possible $r$.\\
+And suppose the first uncovered interval in the sorted order is $I_i=[s_i, t_i]$.\\
+And there are $3$ possible situations.\\
+1. $q_{r+1} \leq p_{r+1}$ and $q_{r+1}\not\in I_i$\\
+Then $q_{r+1}$ is actually a wasted selecction, we can just replace $q_{r+1}$ with $p_{r+1}$.\\
+2. $q_{r+1} \leq p_{r+1}$ and $q_{r+1}\in I_i$\\
+Since $\forall k<i$, we know that the interval $I_k$ has already intersected with $p_1,\cdots,p_r$.\\
+And $\forall k>i$, we know that $t_k\geq t_i$, so we can get that for all intervals $I_k$ which is intersected with $q_{r+1}$, it must be intersected with $p_{r+1}$.
+So we can just replace $q_{r+1}$ with $p_{r+1}$.\\
+3. $q_{r+1} > p_{r+1}$\\
+From our algorithm, we could know that we are setting $p_{r+1}$ to the end of $I_i$, and $I_i$ has no intersections with $p_{1},\cdots,p_r$.
+But since $q_{r+1}>p_{r+1}$, and $\forall k\geq r+1, q_k\geq q_{r+1}$, so the optimal solution will have no intersections with interval $I_i$.
+Which is impossible. So we always have $q_{r+1}\leq p_{r+1}$.\\
 
+So above all, we can say that ours solution is always equal or better than the assumpted optimal solution, i.e. ours algorithm will generate one of the optimal solutions.
 
-
-
-
-
-
-
-
-
-
-
-The time consumption is sorting takes $O(n\log n)$ time, and ...... takes $O(n)$ time,
+The time consumption: Sorting the intervals takes $O(n\log n)$ time, and traverse all intervals to get the number of points to need takes $O(n)$ time,
 so the total time complexity is $O(n\log n)$.\\
-The space complexity is $O(n)$ for storing  .\\
+The space complexity is $O(n)$ for storing the intervals.\\
 
 \newpage
