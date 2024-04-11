@@ -2,18 +2,18 @@
 Given three sequences $L_1, L_2$ and $L$, design an efficient algorithm to check if $L_1$ and $L_2$ can be interleaved to produce $L$.  For example, the sequences $L_1 = \texttt{aabb}$ and $L_2 = \texttt{cba}$ can be interleaved into sequence $L = \texttt{acabbab}$, but $L_1$ and $L_2$ cannot be interleaved into sequence $L = \texttt{aaabbbc}$.  Analyze the time and space complexity of your algorithm as a function of the lengths of $L_1$ and $L_2$.
 
 \solution{}
-
+Define the length of the sequence $L_1$ as $n=|L_1|$, the length of the sequence $L_2$ as $m=|L_2|$, and the length of the sequence $L$ as $n+m=|L|$.\\
+And define the substring $L[i:j]$ as the substring of $L$ from the $i$-th character to the $j$-th character.\\
 Let $dp(i,j)$ be a boolean value, which means whether the first $i$ characters of $L_1$ and the first $j$ characters of $L_2$ can be interleaved to produce the first $i+j$ characters of $L$.
 
 The initial condition is $dp(0,0)=1$, as if $L_1$ and $L_2$ are both empty, then they can be interleaved to produce an empty sequence. \\
 And set $dp(i,0)=1$ if $L_1[1:i]$ can be interleaved to produce $L[1:i]$, otherwise $dp(i,0)=0$.\\
 Similarly, set $dp(0,j)=1$ if $L_2[1:j]$ can be interleaved to produce $L[1:j]$, otherwise $dp(0,j)=0$.\\
-And other state are set to be $0$.\\
+And other state are set to be $0$.
 
 Then we have the following recursive formula:\\
-
 1. If $L_1[i] == L[i+j]$, then $dp(i,j) \gets dp(i,j) \lor dp(i-1,j)$.\\
-As if $L_1[i]$ is the same as $L[i+j]$, then if $L_1[1:i-1]$ and $_2[1:j]$ can be interleaved to produce $L[1:i+j-1]$, then $L_1[1:i]$ and $L2[1:j]$ can be interleaved to produce $L[1:i+j]$.\\
+As if $L_1[i]$ is the same as $L[i+j]$, then if $L_1[1:i-1]$ and $_2[1:j]$ can be interleaved to produce $L[1:i+j-1]$, then $L_1[1:i]$ and $L2[1:j]$ can be interleaved to produce $L[1:i+j]$.
 
 2. If $L_2[j] == L[i+j]$, then $dp(i,j) \gets dp(i,j) \lor dp(i,j-1)$.\\
 As if $L_2[j]$ is the same as $L[i+j]$, then if $L_1[1:i]$ and $L2[1:j-1]$ can be interleaved to produce $L[1:i+j-1]$, then $L_1[1:i]$ and $L2[1:j]$ can be interleaved to produce $L[1:i+j]$.\\
@@ -31,14 +31,10 @@ For loop in the pseudo-code in form `$\textbf{for } i \gets 1 \textbf{ to } n$' 
         
     \State $dp(0,0) \gets 1$
     \For{$i \gets 1$ \textbf{to} $|L_1|$}
-        \If{$L_1[i] == L[i]$}
-            \State $dp(i,0) \gets 1$
-        \EndIf
+        \State $dp(i,0) \gets dp(i-1,0) \lor (L_1[i] == L[i])$
     \EndFor
     \For{$j \gets 1$ \textbf{to} $|L_2|$}
-        \If{$L_2[j] == L[j]$}
-            \State $dp(0,j) \gets 1$
-        \EndIf
+        \State $dp(0,j) \gets dp(0,j-1) \lor (L_2[j] == L[j])$
     \EndFor
     \For{$i \gets 1$ \textbf{to} $|L_1|$}
         \For{$j \gets 1$ \textbf{to} $|L_2|$}
@@ -58,7 +54,7 @@ For loop in the pseudo-code in form `$\textbf{for } i \gets 1 \textbf{ to } n$' 
 \end{algorithm}\\
 The time complexity is $O(nm)$.\\
 The space complexity is $O(nm)$.\\
-If we use the scrolling array method to optimize, the space complexity can be reduced to $O(n+m)$.\\
+If we use the scrolling array method to optimize, the space complexity can be reduced to $O(n+m)$, which is not reflected in the pseudo code.\\
 Where $n$ is the length of $L_1$, $m$ is the length of $L_2$.\\
 
 \newpage

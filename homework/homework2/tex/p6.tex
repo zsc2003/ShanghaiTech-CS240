@@ -3,15 +3,13 @@ Consider a weighted directed graph $G$ with $n$ vertices and $m$ edges, where ea
 
 \solution{}
 
-Let $dp(x, val)$ to be the number of different walks from $s$ to $x$ with length $val$.\\
-Where $x$ is a vertex in the graph.\\
+Let $dp(x, val)$ to be the number of different walks from vertex $s$ to vertex $x$ with length $val$.\\
 The initial condition is set to be $dp(s,0)=1$, and $dp(x,t)=0, \forall (x,t)\neq (s,0)$.\\
 Then we have the following recursive formula:\\
-For each edge $(i,j)\in E$, then the number of different walks from $s$ to $j$ with length $val$ is the sum of the number of different walks from $s$ to $i$ with length $val-w_{i,j}$.\\
+For each edge $(i,j)\in E$, which represent an edge from vertex $i$ to vertex $j$ with weight $w_{i,j}$, then the number of different walks from vertex $s$ to vertex $j$ with length $val$ is the sum of the number of different walks from vertex $s$ to vertex $i$ with length $val-w_{i,j}$.\\
 So we have the following recursive formula:
 $$dp(j,val) = dp(j,val)+dp(i, val-w_{i,j})$$
-Then we just need to take every edge into consideration, and update the 
-??????
+Then we just need to take every edge into consideration, and update the dp value.
 
 The pseudo-code is shown in Algorithm \ref{alg:problem-6}.\\
 For loop in the pseudo-code in form `$\textbf{for } i \gets 1 \textbf{ to } n$' represents $i=1,2,\cdots,n$ sequentially.

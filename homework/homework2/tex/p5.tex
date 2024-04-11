@@ -12,9 +12,10 @@ Of these, 3 evaluate to true: $((\text{T} \lor \text{F}) \lor (\text{T} \land \t
 Give a dynamic programming algorithm to solve this problem. Describe your algorithm, including a clear statement of your dynamic programming equation, show that it is correct, and prove its running time.
 
 \solution{}
+Suppose the inout formula is $a_1,a_2,\cdots,a_n$, where $a_i=1$ for $T$ and $a_i=0$ for $F$.
 
-Let $dp(i,j,val)$ be the number of ways to parenthesize the formula $a_i,a_{i+1},\cdots,a_j$ so that the resulting formula evaluates to $val$.\\
-Let operator$(k)$ be the operator between $a_k$ and $a_{k+1}$.\\
+Let $dp(i,j,val)$ be the number of ways to parenthesize the formula $a_i,a_{i+1},\cdots,a_j$ so that the resulting formula evaluates to $val$, $val = 1$ represents the result is $T$, and $val = 0$ represents the result is $F$.\\
+Let $b[k]$ be the operator between $a_k$ and $a_{k+1}$.\\
 Where $a_i,a_{i+1},\cdots,a_j$ is a subsequence of the original formula.\\
 
 The initial condition is set to be $dp(i,i,a_i)=1$, and $dp(i,i,\neg a_i)=0$.\\
@@ -25,14 +26,14 @@ For an interval $[i,j](i\neq j)$, then it could be seperated into two parts $[i,
 Then we have the following recursive formula:
 If we want the formula in the interval $[i,j]$ to evaluate to $0$, then we have the following cases:
 \begin{itemize}
-    \item If operator$(k) == \land$, then the formula in the interval $[i,j]$ evaluates to $0$ if and only if at least one interval $[i,k]$ or $[k+1,j]$ evaluates to $0$.
-    \item If operator$(k) == \lor$, then the formula in the interval $[i,j]$ evaluates to $0$ if and only if the formula in the interval $[i,k]$ evaluates to $0$ and the formula in the interval $[k+1,j]$ evaluates to $0$.
+    \item If $b[k] == \land$, then the formula in the interval $[i,j]$ evaluates to $0$ if and only if at least one interval $[i,k]$ or $[k+1,j]$ evaluates to $0$.
+    \item If $b[k] == \lor$, then the formula in the interval $[i,j]$ evaluates to $0$ if and only if the formula in the interval $[i,k]$ evaluates to $0$ and the formula in the interval $[k+1,j]$ evaluates to $0$.
 \end{itemize}
 
 If we want the formula in the interval $[i,j]$ to evaluate to $1$, then we have the following cases:
 \begin{itemize}
-    \item If operator$(k) == \land$, then the formula in the interval $[i,j]$ evaluates to $1$ if and only if the formula in the interval $[i,k]$ evaluates to $1$ and the formula in the interval $[k+1,j]$ evaluates to $1$.
-    \item If operator$(k) == \lor$, then the formula in the interval $[i,j]$ evaluates to $1$ if and only if at least one interval $[i,k]$ or $[k+1,j]$ evaluates to $1$.
+    \item If $b[k] == \land$, then the formula in the interval $[i,j]$ evaluates to $1$ if and only if the formula in the interval $[i,k]$ evaluates to $1$ and the formula in the interval $[k+1,j]$ evaluates to $1$.
+    \item If $b[k] == \lor$, then the formula in the interval $[i,j]$ evaluates to $1$ if and only if at least one interval $[i,k]$ or $[k+1,j]$ evaluates to $1$.
 \end{itemize}
 
 So the dynamic programming equation is:
@@ -42,16 +43,16 @@ So the dynamic programming equation is:
             \begin{array}{ll}
                 &\ \ \ dp(i,k,0) * dp(k+1,j,0) \\
                 &+\ dp(i,k,0) * dp(k+1,j,1) \\
-                &+\ dp(i,k,1) * dp(k+1,j,0) \ \ \ \text{if operator} (k) == \land\\
-                &\ \ \ dp(i,k,0) * dp(k+1,j,0) \ \ \ \text{if operator} (k) == \lor
+                &+\ dp(i,k,1) * dp(k+1,j,0) \ \ \ \text{, if } b[k] == \land\\
+                &\ \ \ dp(i,k,0) * dp(k+1,j,0) \ \ \ \text{, if } b[k] == \lor
             \end{array}
         \right.\\
         dp(i,j,1) &= \sum_{k=i}^{j-1} \left\{
             \begin{array}{ll}
                 &\ \ \ dp(i,k,0) * dp(k+1,j,1) \\
                 &+\ dp(i,k,1) * dp(k+1,j,0) \\
-                &+\ dp(i,k,1) * dp(k+1,j,1) \ \ \ \text{if operator} (k) == \lor\\
-                &\ \ \ dp(i,k,1) * dp(k+1,j,1) \ \ \ \text{if operator} (k) == \land
+                &+\ dp(i,k,1) * dp(k+1,j,1) \ \ \ \text{, if } b[k] == \lor\\
+                &\ \ \ dp(i,k,1) * dp(k+1,j,1) \ \ \ \text{, if } b[k] == \land
             \end{array}
         \right.
     \end{aligned}
@@ -76,7 +77,10 @@ For loop in the pseudo-code in form `$\textbf{for } i \gets 1 \textbf{ to } n$' 
     
     \For{$i \gets 1$ \textbf{to} $n$}
         \For{$j \gets i+1$ \textbf{to} $n$}
+            \State $dp(i,j,0) \gets 0$
+            \State $dp(i,j,1) \gets 0$
             \For{$k \gets i$ \textbf{to} $j-1$}
+
                 \If{$b_i == \land$}
                     \State $dp(i,j,0) \gets dp(i,k,0) * dp(k+1,j,0)$
                     \Statex $\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\  +\ dp(i,k,0) * dp(k+1,j,1)$

@@ -3,6 +3,7 @@ A thief is planning to rob houses along a street. Each house has a certain amoun
 \solution{}
 
 Suppose there are totally $n$ houses. Let $dp(i,0)$ be the maximum amount of money the thief can steal from the first $i$ houses without robbing the $i$-th house, and $dp(i,1)$ be the maximum amount of money the thief can steal from the first $i$ houses with robbing the $i$-th house.
+Suppose each house $i$ has money of $a_i$.
 
 For the initial condition, we have $dp(1,0)=0$ and $dp(1,1)=a_1$. As if the theif do not steal from the first house, he would get no money, and if he steals from the first house, he would get $a_1$ money.
 And other states are set to be $0$. 
@@ -26,14 +27,14 @@ The pseudo-code is shown in Algorithm \ref{alg:problem-3}. For loop in the pseud
     \State $dp(1,0) \gets 0, dp(1,1)\gets a_1$
     \For{$i \gets 2$ \textbf{to} $n$}
         \State $dp(i,0) \gets \max\{dp(i-1,0),dp(i-1,1)\}$
-        \State $dp(i,0) \gets dp(i-1,0)+a_i$
+        \State $dp(i,1) \gets dp(i-1,0)+a_i$
     \EndFor
     \State $ans \gets \max\{dp(n,0),dp(n,1)\}$
     \State \textbf{return} $ans$
     \end{algorithmic}
     \label{alg:problem-3}
 \end{algorithm}\\
-The time complexity is $O(n)$.
-The space complexity is $O(n)$.
+The time complexity is $O(n)$ for the dp process.\\
+The space complexity is $O(n)$ for storing each house's money.
 
 \newpage
