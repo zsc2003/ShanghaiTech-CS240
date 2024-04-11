@@ -39,10 +39,10 @@ For loop in the pseudo-code in form `$\textbf{for } i \gets 1 \textbf{ to } n$' 
     \For{$i \gets 1$ \textbf{to} $|L_1|$}
         \For{$j \gets 1$ \textbf{to} $|L_2|$}
             \State $dp(i,j) \gets 0$
-            \If{$L_1[i] == L[j]$}
+            \If{$L_1[i] == L[i+j]$}
                 \State $dp(i,j) \gets dp(i,j) \lor dp(i-1,j)$
             \EndIf
-            \If{$L_2[j] == L[j]$}
+            \If{$L_2[j] == L[i+j]$}
                 \State $dp(i,j) \gets dp(i,j) \lor dp(i,j-1)$
             \EndIf
         \EndFor
