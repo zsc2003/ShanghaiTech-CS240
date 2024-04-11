@@ -1,12 +1,11 @@
 \problem{}
 A thief is planning to rob houses along a street. Each house has a certain amount of money stashed, and the thief can rob any set of houses, as long as he does not rob any adjacent houses.  Determine the maximum amount of money the thief can steal.
-
 \solution{}
 
-Let $dp(i,0)$ be the maximum amount of money the thief can steal from the first $i$ houses without robbing the $i$-th house, and $dp(i,1)$ be the maximum amount of money the thief can steal from the first $i$ houses with robbing the $i$-th house.
+Suppose there are totally $n$ houses. Let $dp(i,0)$ be the maximum amount of money the thief can steal from the first $i$ houses without robbing the $i$-th house, and $dp(i,1)$ be the maximum amount of money the thief can steal from the first $i$ houses with robbing the $i$-th house.
 
-For the initial condition, we have $dp(1,0)=0$ and $dp(1,1)=a_1$. As if the theif do not steal from the first house, he would get no money, and if he steals from the first house, he would get $a_1$ money.\\
-And other states are set to be $0$.
+For the initial condition, we have $dp(1,0)=0$ and $dp(1,1)=a_1$. As if the theif do not steal from the first house, he would get no money, and if he steals from the first house, he would get $a_1$ money.
+And other states are set to be $0$. 
 
 Then we have the following recursive formula:
 
@@ -34,8 +33,7 @@ The pseudo-code is shown in Algorithm \ref{alg:problem-3}. For loop in the pseud
     \end{algorithmic}
     \label{alg:problem-3}
 \end{algorithm}\\
-The time complexity is $O(n)$.\\
-The space complexity is $O(n)$.\\
-Where $n$ is the number of houses.\\
+The time complexity is $O(n)$.
+The space complexity is $O(n)$.
 
 \newpage

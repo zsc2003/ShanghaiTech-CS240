@@ -2,11 +2,11 @@
 Suppose you need to perform $n$ tasks, and you can only perform one task at a time.  It takes $t_i$ time to perform the $i$'th task, and the task has an importance of $w_i > 0$.  Let $C_i$ be the completion time of the $i$'th task, i.e. the time when you finish performing the task.  Find an ordering of the tasks to minimize their weighted completion time, defined as $\sum_{i=1}^{n} w_i  C_i$.  Your algorithm should work in $O(n\log{n})$ time, and you need to analyze the algorithm's time complexity and prove its correctness. 
 
 \solution{}
-We can sort the tasks by $\dfrac{w_i}{t_i}$ in descending order.\\
+We can sort the tasks by $\dfrac{t_i}{w_i}$ in asscending order.\\
 
 Proof correctness:\\
 W.L.O.G, we can just consider the two neighboring tasks $i$ and $j$, where $j=i+1$, and we now only consider the order of $i,j$.\\
-In our sorting order, we have $\dfrac{w_i}{t_i}\geq\dfrac{w_j}{t_j}$, since we have $\forall i,w_i>0$, then we can get that $ w_j\cdot t_i - w_i\cdot t_j \leq 0$.\\
+In our sorting order, we have $\dfrac{t_i}{w_i}\leq\dfrac{t_j}{w_j}$, since we have $\forall i,w_i>0$, then we can get that $ w_j\cdot t_i - w_i\cdot t_j \leq 0$.\\
 Suppose the start time of the task $i$ is $t_0$, $s_0$ is the weighted completion time before task $i$, and $s_3$ be the weighted completion time after task $j$.
 Then the weighted completion time for the order $i,j$ is
 $$s_1=s_0+w_i\cdot(t_0+t_i)+w_j\cdot(t_0+t_i+t_j)+s_3$$

@@ -11,7 +11,7 @@ For each edge $(i,j)\in E$, then the number of different walks from $s$ to $j$ w
 So we have the following recursive formula:
 $$dp(j,val) = dp(j,val)+dp(i, val-w_{i,j})$$
 Then we just need to take every edge into consideration, and update the 
-
+??????
 
 The pseudo-code is shown in Algorithm \ref{alg:problem-6}.\\
 For loop in the pseudo-code in form `$\textbf{for } i \gets 1 \textbf{ to } n$' represents $i=1,2,\cdots,n$ sequentially.
@@ -26,7 +26,9 @@ For loop in the pseudo-code in form `$\textbf{for } i \gets 1 \textbf{ to } n$' 
     
     \For{$val \gets 1$ \textbf{to} $L$}
         \For{$(i, j)\in E$}
-            \State $dp(j,val) \gets dp(j,val)+dp(i, val-w_{i,j})$
+            \If{$val\geq w_{i,j}$}
+                \State $dp(j,val) \gets dp(j,val)+dp(i, val-w_{i,j})$
+            \EndIf
         \EndFor
     \EndFor
     \State \textbf{return} $dp(t,L)$
