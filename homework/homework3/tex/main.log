@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999995 (TeX Live 2023) (preloaded format=xelatex 2024.3.6)  21 APR 2024 13:19
+This is XeTeX, Version 3.141592653-2.6-0.999995 (TeX Live 2023) (preloaded format=xelatex 2024.3.6)  27 APR 2024 18:42
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -474,27 +474,137 @@ LaTeX Font Info:    Trying to load font information for U+msb on input line 74.
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ) [1
 
-] (./p1.tex [2]) (./p2.tex [3]) (./p3.tex [4]) (./p4.tex
+] (./p1.tex
+Package hyperref Info: bookmark level for unknown algorithm defaults to 0 on input line 18.
+
+Underfull \hbox (badness 10000) in paragraph at lines 34--35
+
+ []
+
+[2]) (./p2.tex
+File: ../fig/p2.png Graphic file (type bmp)
+<../fig/p2.png>
+
+Underfull \hbox (badness 10000) in paragraph at lines 14--20
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 21--26
+
+ []
+
+[3]
+Underfull \hbox (badness 10000) in paragraph at lines 27--29
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 30--34
+
+ []
+
+[4]) (./p3.tex
+File: ../fig/p3.png Graphic file (type bmp)
+<../fig/p3.png>
+
+Underfull \hbox (badness 10000) in paragraph at lines 13--16
+
+ []
+
+[5]
+Underfull \hbox (badness 10000) in paragraph at lines 23--24
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 25--28
+
+ []
+
+[6]) (./p4.tex
 Underfull \hbox (badness 10000) in paragraph at lines 2--3
 
  []
 
-[5]) (./p5.tex [6]) (./p6.tex
+File: ../fig/p4.png Graphic file (type bmp)
+<../fig/p4.png>
+[7]
+Underfull \hbox (badness 10000) in paragraph at lines 34--38
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 41--44
+
+ []
+
+[8]) (./p5.tex
+Underfull \hbox (badness 10000) in paragraph at lines 6--10
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 11--15
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 16--20
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 21--25
+
+ []
+
+[9]) (./p6.tex
 Underfull \hbox (badness 10000) in paragraph at lines 4--5
 
  []
 
-[7]) (./main.aux)
+
+Underfull \hbox (badness 10000) in paragraph at lines 9--10
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 11--15
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 19--26
+
+ []
+
+[10]
+Underfull \hbox (badness 10000) in paragraph at lines 27--36
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 37--38
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 39--42
+
+ []
+
+[11]) (./main.aux)
 Package rerunfilecheck Info: File `main.out' has not changed.
 (rerunfilecheck)             Checksum: D19061D996EB016DD43DA58FE1147384;630.
  ) 
 Here is how much of TeX's memory you used:
- 13032 strings out of 476683
- 198444 string characters out of 5807576
- 1851012 words of memory out of 5000000
- 33062 multiletter control sequences out of 15000+600000
- 519063 words of font info for 68 fonts, out of 8000000 for 9000
+ 13086 strings out of 476683
+ 199327 string characters out of 5807576
+ 1854012 words of memory out of 5000000
+ 33111 multiletter control sequences out of 15000+600000
+ 519071 words of font info for 69 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
- 72i,6n,76p,699b,342s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 72i,6n,76p,699b,340s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on main.pdf (7 pages).
+Output written on main.pdf (11 pages).

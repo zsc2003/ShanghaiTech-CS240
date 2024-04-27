@@ -2,12 +2,35 @@
 Given a network $G(V, E, s, t)$, give a polynomial time algorithm to determine whether $G$ has a unique minimum $s-t$ cut.
 
 \solution{}
+Since we have known that the minimum $s-t$ cut of the graph $G$ is the same as the maximum flow of the graph $G$, we can use the Ford-Fulkerson algorithm to get the minimal $s-t$ cut of the graph $G$.
 
+We can get the minimal $s-t$ cut of the graph $G$ in polynomial time such as using the Ford-Fulkerson algorithm with capacity scaling in $O(|E|^2\log C)$ time, where $C$ is the maximum capacity of the edges in the graph.
 
+Suppose that after running the Ford-Fulkerson algorithm, we get the minimal $s-t$ cut of the graph $G$ is $e_1, e_2, \cdots e_k$.
 
+Then each time we can remove one edge $e_i$ from the graph $G$, and then run the Ford-Fulkerson algorithm again to get the new minimal $s-t$ cut. If the new minimal $s-t$ cut is the same as the original minimal $s-t$ cut, then the graph $G$ doesn't have a unique minimal $s-t$ cut.
 
+After sequentially remove $e_i$ each time, if all the new minimal $s-t$ cuts are different from the original minimal $s-t$ cut, then the graph $G$ has a unique minimal $s-t$ cut.
 
+So the algorithm is shown in \ref{alg:unique_cut}.
 
+\begin{algorithm}
+\caption{Determine whether $G$ has a unique minimum $s-t$ cut}
+\begin{algorithmic}[1]
+\State Run the Ford-Fulkerson algorithm to get the minimal $s-t$ cut of $G$.
+\State Let $e_1, e_2, \cdots e_k$ be the edges in the minimal $s-t$ cut.
+\For{$i = 1$ to $k$}
+    \State Remove the edge $e_i$ from $G$ and get $G'$.
+    \State Run Ford-Fulkerson algorithm on $G'$ to get the new minimal $s-t$ cut.
+    \If{The new minimal $s-t$ cut == the original minimal $s-t$ cut}
+        \State \Return False
+    \EndIf
+\EndFor
+\State \Return True
+\end{algorithmic}
+\label{alg:unique_cut}
+\end{algorithm}
 
+The total time complexity is $O(|E|^3\log C)$, as there are at most $|E|$ edges in the minimal $s-t$ cut, and each time we need to run the Ford-Fulkerson algorithm in $O(|E|^2\log C)$ time.\\
 
 \newpage

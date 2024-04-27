@@ -3,12 +3,26 @@ Given a set $C$, a collection $D$ of subsets of $C$, and a value $k$, the $k$-SE
 
 \solution{}
 
+1. Verifier. \\
+Certificate $D_1,D_2,\cdots,D_k$ are $k$ subsets from $D$.\\
+Check whether the $k$ are mutually disjoint.\\
+If so, output $1$, otherwise, output $0$.\\
 
+2. If $D$ is yes instance. \\
+Then there exist a combination of $k$ subsets from $D$ which are mutually disjoint.\\
+Let $D_1,\cdots,D_k$ be this assignment, and give it to $V$.\\
+Clearly, $V$ outputs $1$.\\
 
+3. If $D$ is no instance. \\
+Then there has no combination of $k$ subsets from $D$ which are mutually disjoint.\\
+So no matter how we combine the $k$ subsets from $D$, there will also exists unions.\\
+So $V$ outputs $0$, for any input $D_1,\cdots,D_k$.\\
 
+4. $V$ runs in polynomial time. \\
+If each subset $D_i$ has atmost $|C|$ element, then to check each pair of sets $D_i,D_j$ will have $|C|^2$ time.\\
+And there are total $O(k^2)$ pairs.\\
+So $V$ runs in $O(k^2|C|)$ time, which is a polynomial time.\\
 
-
-
-
+So above all, we have proved that the $k$-SET-PACKING problem is in NP.
 
 \newpage

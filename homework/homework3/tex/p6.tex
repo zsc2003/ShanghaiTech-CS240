@@ -6,12 +6,40 @@ For example, if $C = \{a, b, c, d\}, S = \{1, 2, 3\}, R = \{\{a, b, c\}, \{a, b,
 \noindent  \emph{Hint:}  Use a reduction from the 3-COLOR problem.
 
 \solution{}
+Since we are given that $|S|=3$, so we can use a reduction from the $3$-COLOR problem.\\
 
+1. Conflict-free schedule $\in$ NP problem.\\
+For each given schedule, we can directly check whether each of the $|R|$ student's at most $|C|$ courses has the same time in the time slot.\\
+This could be done in $O(|R||C|)$ time, which is a polynomial time.\\
+So Conflict-free schedule $\in$ NP problem.\\
 
+2. $3$-COLOR $\leq_P$ Conflict-free schedule.\\
+We need to prove that $3$-coloring problem on graph $G$ is a yes-instance of $3$-coloring problem iff $(C, S, R)$ is a yes-instance of the Conflict-free schedule problem:
 
+<1>. "$\Rightarrow$":\\
+Construction: for any instance of $3$-coloring problem on graph $G$:\\
+Let each node $u$ to be a course, which constructs $C$.\\ 
+Let each edge $(u, v)$ to be a student whose requests is $\{u, v\}$, which constructs $R$.\\
+Let each color we use becomes a slot, which constructs $S$.\\
+Then if $G$ is a yes-instance of 3-coloring problem, then according to our construction:\\
+Since for each edge $(u, v)$, $u$ and $v$ will be painted with different color, then for each student's requests will not be scheduled to the same slot, which means the Conflict-free schedule problem is also a yes-instance.\\
 
+<2>. "$\Leftarrow$":
+Construction: for any instance of the Conflict-free schedule $(C, S, R)$:\\
+Let each course in $C$ to be a node in graph $G$, which constructs $|V|$.\\
+Let each pair of cources in $R$, suppose the two cources are $u$, $v$, then set $(u, v)$ to be an edge in graph $G$, which constructs $|E|$.\\
+Let each time in the time slot to a color, which constructs the color set.\\
+Then if $(C, S, R)$ is a yes-instance of the Conflict-free schedule problem, then their are no conflicts for a students' requests pair $(u,v)$.\\
+Then each edge's two nodes are in different colors.\\
+Since $|S|=3$, so we can painting the nodes in constructed graph $G$ according to color set within $3$ colors.\\
+So it is also a yes-instance of $3$-coloring problem.\\
 
+So we have proved that $3$-COLOR $\leq_P$ Conflict-free schedule.\\
 
+Since $3$-COLOR problem $\in$ NP-complete problem, Conflict-free schedule $\in$ NP problem.\\
+$3$-COLOR $\leq_P$ Conflict-free schedule.\\
+Therefore, Conflict-free schedule $\in$ NP-complete problem.\\
 
+So above all, we have proved that Conflict-free schedule is a NP-complete problem.
 
 \newpage
