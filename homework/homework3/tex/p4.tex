@@ -15,6 +15,8 @@ We can construct the graph as the Figure \ref{fig:p4} shows.
 
 The details are as follows:
 
+Each node $u$ is seperated into $2$ new node, a in node $u$ and an out node $u'$.
+
 Supoose each node is given a number to represent a grid. The neibor nodes $(i,j)$'s edge's capacity is $c_{i,j}$, the node $i$'s capacity is $v_i$.
 
 The start vertices are $s_1,s_2,\cdots,s_m$, the boundary nodes are $b_1,\cdots,b_{4n-4}$.
@@ -39,7 +41,7 @@ So we can just set the $+\infty$ to be $C$.\\
 With above construction, we can use the Ford-Fulkerson algorithm to find the maximum flow of the constructed graph. 
 
 If the maximum flow is the number of paths the graph can have which suits the requirements.\\
-The time complexity is $O(n^2\log C)$.\\
-Since each grid is seperate into two nodes, but the nodes' edges are constant, so the number of the edges in the constructed graph is $O(n)$.\\
+The time complexity is $O(n^4\log C)$.\\
+Since each grid is seperate into two nodes, but the nodes' edges are constant, so the number of the edges in the constructed graph is $O(n^2)$.\\
 
 \newpage
