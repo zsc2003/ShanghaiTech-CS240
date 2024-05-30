@@ -4,6 +4,24 @@ Given a set $C$, a collection of subsets of $C$ and an integer $k \geq 1$, the S
 
 \solution{}
 
+To prove that the Set-Cover problem is NP-complete, we first establish that it is in NP because a candidate solution can be verified in polynomial time by checking that the union of selected subsets covers all elements of set \( C \) and that no more than \( k \) subsets are used.
+
+\textbf{Reduction from 3-SAT to Set-Cover}:
+\begin{itemize}
+    \item \textbf{Input Construction}:
+    \begin{itemize}
+        \item \textbf{Set \( C \)}: Corresponds to clauses in the 3-SAT instance.
+        \item \textbf{Collection of Subsets}: For each variable \( x_i \), create subsets for \( x_i = \text{true} \) and \( x_i = \text{false} \), each containing clauses satisfied by these assignments.
+    \end{itemize}
+    \item \textbf{Correctness of Reduction}:
+    \begin{itemize}
+        \item If the 3-SAT formula is satisfiable, the corresponding subsets cover all clauses in \( C \).
+        \item Conversely, a cover for all clauses implies a satisfying assignment for the 3-SAT formula.
+    \end{itemize}
+    \item \textbf{Polynomial Time}: Direct construction from the 3-SAT formula, polynomial in the number of variables and clauses.
+\end{itemize}
+
+This reduction demonstrates that Set-Cover is NP-hard. Coupled with the fact that Set-Cover is in NP, it is therefore NP-complete.
 
 
 

@@ -5,6 +5,20 @@ Given a Boolean CNF (conjunctive normal form) formula $\phi$ and an integer $k \
 \solution{}
 
 
+To prove that the Stingy-SAT problem is NP-complete, we follow two steps:
+
+\begin{enumerate}
+    \item \textbf{Stingy-SAT is in NP}: We need to verify that a given solution (a set of variable assignments) can be checked in polynomial time. The verification involves ensuring no more than \(k\) variables are set to true and that the CNF formula \(\phi\) is satisfied under this assignment.
+
+    \item \textbf{Stingy-SAT is NP-hard}: We reduce the NP-complete problem SAT to Stingy-SAT. Given a CNF formula \(\psi\) from a SAT instance:
+    \begin{itemize}
+        \item Construct a Stingy-SAT instance \((\phi, k)\) where \(\phi = \psi\) and \(k\) is the total number of variables in \(\psi\).
+        \item \textbf{Correctness}: If \(\psi\) is satisfiable, any satisfying assignment (up to the total number of variables) is a valid solution for Stingy-SAT. Conversely, a solution to the Stingy-SAT instance indicates that \(\psi\) is satisfiable.
+    \end{itemize}
+    This reduction is polynomial as it involves only setting \(\phi\) and \(k\) based on \(\psi\).
+\end{enumerate}
+
+\textbf{Conclusion}: Since Stingy-SAT can verify solutions in polynomial time and can be reduced from SAT in polynomial time, it is NP-complete.
 
 
 
