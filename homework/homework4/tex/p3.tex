@@ -4,26 +4,39 @@ Given a set $C$, a collection of subsets of $C$ and an integer $k \geq 1$, the S
 
 \solution{}
 
-To prove that the Set-Cover problem is NP-complete, we first establish that it is in NP because a candidate solution can be verified in polynomial time by checking that the union of selected subsets covers all elements of set \( C \) and that no more than \( k \) subsets are used.
+1. Set-Cover is in NP.\\
+Given a collection of subsets of $C$, and the integer $k$, we can visit each subset $C_i$, and mark the elements in $C_i$ as covered.\\ The visit would cost $O(k|C|)$ time, where $|C|$ is the number of elements in $|C|$. Then we check whether all elements in $C$ are covered.\\
+So the total time complexity is $O((k+1)|C|)$, which is polynomial.\\
+So Set-Cover $\in$ NP.\\
 
-\textbf{Reduction from 3-SAT to Set-Cover}:
-\begin{itemize}
-    \item \textbf{Input Construction}:
-    \begin{itemize}
-        \item \textbf{Set \( C \)}: Corresponds to clauses in the 3-SAT instance.
-        \item \textbf{Collection of Subsets}: For each variable \( x_i \), create subsets for \( x_i = \text{true} \) and \( x_i = \text{false} \), each containing clauses satisfied by these assignments.
-    \end{itemize}
-    \item \textbf{Correctness of Reduction}:
-    \begin{itemize}
-        \item If the 3-SAT formula is satisfiable, the corresponding subsets cover all clauses in \( C \).
-        \item Conversely, a cover for all clauses implies a satisfying assignment for the 3-SAT formula.
-    \end{itemize}
-    \item \textbf{Polynomial Time}: Direct construction from the 3-SAT formula, polynomial in the number of variables and clauses.
-\end{itemize}
+2. Vertex-Cover $\leq_p$ Set-Cover.\\
+We can reduce Vertex-Cover to Set-Cover.\\
+Given a Vertex-Cover problem, we can construct a Set-Cover problem.\\
+Given a graph $G=(V,E)$, we can construct a set $C$ which contains all the edges in $E$.\\
+For each vertex $v \in V$, we can construct a subset $C_i$ which contains all the edges incident to $v$.\\
 
-This reduction demonstrates that Set-Cover is NP-hard. Coupled with the fact that Set-Cover is in NP, it is therefore NP-complete.
+<1> "$\Rightarrow$":\\
+Given a Vertex-Cover problem, we can construct a Set-Cover problem.\\
+Given a Vertex-Cover problem, we can construct a set $C$ which contains all the edges in $E$.\\
+For each vertex $v \in V$, it represents a subset $C_i$, and the edge $e$ connects to $v$ represents an element in $C_i$.\\
+Then we can prove that the Vertex-Cover problem has a solution if and only if the Set-Cover problem has a solution and the solution must have at most $k$ vertices.\\
 
+<2> "$\Leftarrow$":\\
+If a Set-Cover problem has a solution, then the solution must have at most $k$ subsets.\\
+Then we can prove that the Vertex-Cover problem has a solution and the solution must have at most $k$ vertices.\\
+Let each subset $C_i$ in the solution corresponds to a vertex $v$ in the solution.\\
+And each element in $C_i$ corresponds to an edge $e$ incident to $v$ and a duplicate single node $v'$.\\
+Then we can prove that the Vertex-Cover problem has a solution if and only if the Set-Cover problem has a solution and the solution must have at most $k$ vertices.\\
 
+<3> Polynomial Time:\\
+The construction of the Set-Cover problem from the Vertex-Cover problem costs $O(|V|+|E|)$ time.\\
+Which is a polynomial time.\\
 
+So we have proved that Vertex-Cover $\leq_p$ Set-Cover.\\
+
+Since Vertex-Cover $\in$ NP-complete; Set-Cover $\in$ NP; Vertex-Cover $\leq_p$ Set-Cover.\\
+Therefore, Set-Cover $\in$ NP-complete.\\
+
+So above all, we have proved that Set-Cover is a NP-complete problem.
 
 \newpage

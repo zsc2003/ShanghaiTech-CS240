@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999995 (TeX Live 2023) (preloaded format=xelatex 2024.3.6)  30 MAY 2024 10:52
+This is XeTeX, Version 3.141592653-2.6-0.999995 (TeX Live 2023) (preloaded format=xelatex 2024.3.6)  31 MAY 2024 14:45
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -474,28 +474,132 @@ LaTeX Font Info:    Trying to load font information for U+msb on input line 74.
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ) [1
 
-] (./p1.tex [2] [3]) (./p2.tex [4]) (./p3.tex [5]) (./p4.tex)
-Overfull \hbox (5.6pt too wide) in paragraph at lines 15--90
-[]\TU/lmr/m/n/10 https://math.stackexchange.com/questions/205714/iterating-over-a-list-of-n-
+] (./p1.tex
+Underfull \hbox (badness 10000) in paragraph at lines 7--10
+
  []
 
-[6] (./hw4.aux)
 
-Package rerunfilecheck Warning: File `hw4.out' has changed.
-(rerunfilecheck)                Rerun to get outlines right
-(rerunfilecheck)                or use package `bookmark'.
+Underfull \hbox (badness 10000) in paragraph at lines 11--14
 
-Package rerunfilecheck Info: Checksums for `hw4.out':
-(rerunfilecheck)             Before: 22CF3B4C5CC5E7F44949B16F11CDBCF9;421
-(rerunfilecheck)             After:  B21F5ECEB8026CDDE5ED91A52C2E0433;420.
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 15--19
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 20--24
+
+ []
+
+[2]
+Underfull \hbox (badness 10000) in paragraph at lines 25--27
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 28--29
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 30--32
+
+ []
+
+[3]) (./p2.tex
+Underfull \hbox (badness 10000) in paragraph at lines 7--12
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 13--16
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 17--20
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 21--23
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 24--28
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 29--31
+
+ []
+
+[4]) (./p3.tex
+Underfull \hbox (badness 10000) in paragraph at lines 7--11
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 12--17
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 18--23
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 24--30
+
+ []
+
+[5]
+Underfull \hbox (badness 10000) in paragraph at lines 31--34
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 35--36
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 37--39
+
+ []
+
+[6]) (./p4.tex
+Underfull \hbox (badness 10000) in paragraph at lines 16--18
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 19--20
+
+ []
+
+
+Overfull \hbox (133.35497pt too wide) detected at line 36
+[]
+ []
+
+[7]) [8] (./hw4.aux)
+Package rerunfilecheck Info: File `hw4.out' has not changed.
+(rerunfilecheck)             Checksum: FE8C4BBBC914A551EC1BD31A650AACEF;420.
  ) 
 Here is how much of TeX's memory you used:
- 13026 strings out of 476683
- 198462 string characters out of 5807576
- 1852012 words of memory out of 5000000
- 33059 multiletter control sequences out of 15000+600000
- 519079 words of font info for 70 fonts, out of 8000000 for 9000
+ 13024 strings out of 476683
+ 198414 string characters out of 5807576
+ 1861012 words of memory out of 5000000
+ 33058 multiletter control sequences out of 15000+600000
+ 519071 words of font info for 69 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
- 72i,8n,76p,697b,456s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 72i,16n,76p,479b,349s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on hw4.pdf (6 pages).
+Output written on hw4.pdf (8 pages).

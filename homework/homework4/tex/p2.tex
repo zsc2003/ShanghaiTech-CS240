@@ -4,23 +4,31 @@ Given a Boolean CNF (conjunctive normal form) formula $\phi$ and an integer $k \
 
 \solution{}
 
+1. Stingy-SAT is in NP.\\
+We can varify a CNF formula \(\phi\) is satisfied or not in polynomial time.\\
+And then check the number of variables set to true is no more than \(k\) in $O(n)$ time, where $n$ is the length of $\phi$.\\
+So the total time complexity is polynomial.\\
+So Stingy-SAT $\in$ NP.\\
 
-To prove that the Stingy-SAT problem is NP-complete, we follow two steps:
+2. SAT $\leq_p$ Stingy-SAT.\\
+We can reduce SAT to Stingy-SAT.\\
+Given a SAT problem, we additionally check whether the number of variables set to true is no more than \(k\).\\
 
-\begin{enumerate}
-    \item \textbf{Stingy-SAT is in NP}: We need to verify that a given solution (a set of variable assignments) can be checked in polynomial time. The verification involves ensuring no more than \(k\) variables are set to true and that the CNF formula \(\phi\) is satisfied under this assignment.
+<1> "$\Rightarrow$":\\
+If the SAT problem with firmula $\phi$ with $k$ variables is satisfied, then the number of variables set to true is no more than \(k\).\\
+So the Stingy-SAT $(\phi,k)$ is satisfied.\\
 
-    \item \textbf{Stingy-SAT is NP-hard}: We reduce the NP-complete problem SAT to Stingy-SAT. Given a CNF formula \(\psi\) from a SAT instance:
-    \begin{itemize}
-        \item Construct a Stingy-SAT instance \((\phi, k)\) where \(\phi = \psi\) and \(k\) is the total number of variables in \(\psi\).
-        \item \textbf{Correctness}: If \(\psi\) is satisfiable, any satisfying assignment (up to the total number of variables) is a valid solution for Stingy-SAT. Conversely, a solution to the Stingy-SAT instance indicates that \(\psi\) is satisfiable.
-    \end{itemize}
-    This reduction is polynomial as it involves only setting \(\phi\) and \(k\) based on \(\psi\).
-\end{enumerate}
+<2> "$\Leftarrow$":\\
+If the Stingy-SAT $(\phi,k)$ is satisfied, then without the constrains of $k$, the SAT problem is also satisfied.\\
 
-\textbf{Conclusion}: Since Stingy-SAT can verify solutions in polynomial time and can be reduced from SAT in polynomial time, it is NP-complete.
+<3> Polynomial Time:\\
+The construction only needs to check the number of variables set to true, which is in $O(n)$ time.\\
+So it could be done in polynomial time.\\
+So we have proved that SAT $\leq_p$ Stingy-SAT.\\
 
+Since SAT $\in$ NP-complete; Stingy-SAT$\in$ NP; SAT $\leq_p$ Stingy-SAT.\\
+Therefore, Stingy-SAT $\in$ NP-complete.\\
 
-
+So above all, we have proved that Stingy-SAT is a NP-complete problem.
 
 \newpage

@@ -3,13 +3,36 @@
 Consider a list with $n$ unique positive integers, and suppose we iterate through the numbers one by one in a random order. As we do this, we maintain a variable $b$ equal to the largest number we have seen so far. Initially $b$ is set to 0 . Compute the expected number of times $b$ is updated.
 
 For example, if the input list is $[4,7,5]$, and we iterate through the list in the order $3,1,2$, then $b$ is updated twice, when we see $5$ and $7$.
-
 \solution{}
+We firstly introduce a Lemma:
+$$\sum\limits_{k=i}^n\binom{k-1}{i-1}=\binom{n}{i}$$
+Proof of the Lemma:
 
+1. When $n=i$, the left side of the equation is $\binom{i-1}{i-1}=1$, and the right side of the equation is $\binom{i}{i}=1$. The equation holds.
 
+2. Suppose the equation holds when $n=m\geq i$, i.e.
+$$\sum\limits_{k=i}^m\binom{k-1}{i-1}=\binom{m}{i}$$
+then we need to prove the equation holds when $n=m+1$:
+$$\sum\limits_{k=i}^{m+1}\binom{k-1}{i-1}=\sum\limits_{k=i}^{m}\binom{k-1}{i-1}+\binom{m}{i-1}=\binom{m}{i}+\binom{m}{i-1}=\binom{m+1}{i}$$
+The equation holds when $n=m+1$.\\
 
-所有的排列中，第i个数是前i个数中的最大值的概率是$\frac{1}{i}$
+So above all, we have proved the Lemma.\\
 
+So for the list, since the numbers are unique, so W.L.O.G, we can assume the list is $[1,2,3,...,n]$.\\
+Let the expected number of times $b$ is updated to be $E$.\\
+So
+\begin{align*}
+    E &= \dfrac{1}{n!}\sum_{\text{$n!$ permutations}}\text{\# times $b$ is updated in this permutation} \\
+    &= \dfrac{1}{n!}\sum_{\text{$n!$ permutations}}\sum_{i=1}^n\text{\# times $b$ is updated at the $i$-th number} \\
+    &= \dfrac{1}{n!}\sum_{i=1}^n\sum_{\text{$n!$ permutations}}\text{\# times $b$ is updated at the $i$-th number} \\
+    &= \dfrac{1}{n!}\sum_{i=1}^n\sum_{k=i}^n\binom{k-1}{i-1}(i-1)!(n-i)! \ \ \text{(let the $i$-th number is $k$, and it is the biggest among first $i$ numbers)} \\
+    &= \dfrac{1}{n!}\sum_{i=1}^n(i-1)!(n-i)!\sum_{k=i}^n\binom{k-1}{i-1} \\
+    &= \dfrac{1}{n!}\sum_{i=1}^n(i-1)!(n-i)!\binom{n}{i} \ \ \ \ \ \text{(Lemma)} \\
+    &= \sum_{i=1}^n\dfrac{(i-1)!(n-i)!}{n!}\binom{n}{i} \\
+    &= \sum_{i=1}^n\dfrac{i!(n-i)!}{n!}\binom{n}{i}\dfrac{1}{i} \\
+    &= \sum_{i=1}^n\dfrac{1}{\binom{n}{i}}\binom{n}{i}\dfrac{1}{i} \\
+    &= \sum_{i=1}^n\dfrac{1}{i} \\
+    &= \log n + \gamma
+\end{align*}
 
-
-https://math.stackexchange.com/questions/205714/iterating-over-a-list-of-n-distinct-integers-how-many-times-will-the-running-ma
+So above all, the expected number of times $b$ is updated is $\log n + \gamma$, where $\gamma$ is the Euler-Mascheroni constant.

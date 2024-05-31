@@ -4,43 +4,32 @@ Given a set $C$, a collection of subsets of $C$ and an integer $k \geq 1$, the S
 
 \solution{}
 
+1. Set-Packing is in NP.\\
+For a collection of subsets and an integer \( k \), we can directly check each pair of subsets to verify whether they are pairwise disjoint. There are \( \binom{k}{2} \) pairs of subsets to check, and for each pair, we can check whether they have the same element in $O(|C|)$ time by iterating through the elements, where $|C|$ is the number of elements in the set $C$. So we can verify the solution is valid or not in $O\left(\binom{k}{2}|C|\right)$ time.\\
+So Set-Packing $\in$ NP.\\
 
+2. Independent-Set $\leq_p$ Set-Packing.\\
+We have known that the Independent-Set problem is NP-complete.\\
+Given a graph \( G = (V, E) \) and an integer \( k \), the Independent Set problem asks whether there exists a set of \( k \) vertices in \( G \) such that no two vertices in the set are adjacent.\\
 
-To prove that the Set-Packing problem is NP-complete, we need to demonstrate two things:
+<1> "$\Rightarrow$":\\
+For an instance of Independent-Set problem, construct an instance of Set-Packing as follows:\\
+Let each node in the graph be a subset in the Set-Packing problem. For each node \( v \) in \( V \), create a subset \( S_v \) containing all the edges that are incident to \( v \) in \( G \). Specifically, \( S_v = \{e \in E \mid v \in e\} \).\\
+Since it is a yes instance of Independent-Set problem, there exists a set of \( k \) vertices in \( G \) such that no two vertices in the set are adjacent. This means that there exists a set of \( k \) subsets in the Set-Packing problem that are pairwise disjoint. So it is a yes instance of Set-Packing problem.\\
 
-\begin{enumerate}
-    \item \textbf{Set-Packing is in NP}: We need to show that a given solution can be verified in polynomial time.
-    \item \textbf{Set-Packing is NP-hard}: We need to reduce a known NP-complete problem to Set-Packing in polynomial time.
-\end{enumerate}
+<2> "$\Leftarrow$":\\
+For an instance of Set-Packing problem, construct an instance of Independent-Set as follows:\\
+Let each subset in the Set-Packing problem be a node in the graph. For each subset \( S_v \) in the Set-Packing problem, create a node \( v \) in the graph.\\
+Since it is a yes instance of Set-Packing problem, there exists a set of \( k \) subsets in the collection which are pairwise disjoint. This means that there exists a set of \( k \) vertices in \( G \) such that no two vertices in the set are adjacent. So it is a yes instance of Independent-Set problem.\\
 
-\subsection*{1. Set-Packing is in NP}
-A problem is in NP if a solution can be verified in polynomial time. For the Set-Packing problem, given a collection of subsets and an integer \( k \), a "solution" would be a list of \( k \) subsets. We can verify whether these \( k \) subsets are pairwise disjoint by checking each pair of subsets to ensure they do not share any element. There are \( \binom{k}{2} \) pairs of subsets to check, and for each pair, we can check for intersection in time proportional to the sizes of the subsets involved. Thus, if the subsets and \( k \) are polynomial in the size of the input, this verification process is polynomial, confirming that Set-Packing is in NP.
+<3> Polynomial Time:\\
+The reduction constructs a subset for each vertex and assigns the incident edges to each subset, both of which can be accomplished in polynomial time relative to the size of \( V \) and \( E \).\\
 
-\subsection*{2. Set-Packing is NP-hard}
-To show that Set-Packing is NP-hard, we reduce from a known NP-complete problem. A convenient choice is the Independent Set problem, which is well-known to be NP-complete.
+So we have proved that Independent Set $\leq_p$ Set-Packing.\\
 
-\subsubsection*{Independent Set Problem}
-Given a graph \( G = (V, E) \) and an integer \( k \), the problem asks whether there exists a set of \( k \) vertices in \( G \) such that no two vertices in the set are adjacent.
+Since Independent-Set $\in$ NP-complete; Set-Packing $\in$ NP; Independent-Set $\leq_p$ Set-Packing.\\
+Therefore, Set-Packing $\in$ NP-complete.\\
 
-\subsubsection*{Reduction from Independent Set to Set-Packing}
-\begin{enumerate}
-    \item \textbf{Construction}: Given an instance of the Independent Set problem, i.e., a graph \( G = (V, E) \) and an integer \( k \), construct an instance of Set-Packing as follows:
-    \begin{itemize}
-        \item For each vertex \( v \) in \( V \), create a subset \( S_v \) containing all the edges that are incident to \( v \) in \( G \). Specifically, \( S_v = \{e \in E \mid v \in e\}\).
-        \item Let the collection of subsets be \( \{S_v \mid v \in V\} \).
-        \item The goal is to find whether there exists a set of \( k \) subsets from this collection that are pairwise disjoint.
-    \end{itemize}
-    \item \textbf{Correctness of the Reduction}:
-    \begin{itemize}
-        \item If there is an independent set of size \( k \) in \( G \), then the corresponding subsets \( \{S_v \mid v \) is in the independent set\(\} \) are pairwise disjoint. This is because if two vertices \( u \) and \( v \) are independent (not adjacent), there are no edges shared between \( S_u \) and \( S_v \).
-        \item Conversely, if there exists a set of \( k \) pairwise disjoint subsets in the Set-Packing instance, the vertices corresponding to these subsets form an independent set in \( G \). No two subsets share an edge, which means their corresponding vertices do not share an edge and thus are not adjacent.
-    \end{itemize}
-    \item \textbf{Polynomial Time}: The reduction constructs a subset for each vertex and assigns the incident edges to each subset, both of which can be accomplished in polynomial time relative to the size of \( V \) and \( E \).
-\end{enumerate}
-
-\subsection*{Conclusion}
-Given that we can verify solutions in polynomial time and that we can reduce the Independent Set problem (which is NP-complete) to Set-Packing in polynomial time, it follows that Set-Packing is NP-complete. This shows that it is not only a complex problem but one for which no polynomial-time algorithm is likely to exist unless P = NP.
-
-
+So above all, we have proved that Set-Packing is a NP-complete problem.
 
 \newpage
