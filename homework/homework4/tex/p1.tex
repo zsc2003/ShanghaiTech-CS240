@@ -8,26 +8,23 @@ Given a set $C$, a collection of subsets of $C$ and an integer $k \geq 1$, the S
 For a collection of subsets and an integer \( k \), we can directly check each pair of subsets to verify whether they are pairwise disjoint. There are \( \binom{k}{2} \) pairs of subsets to check, and for each pair, we can check whether they have the same element in $O(|C|)$ time by iterating through the elements, where $|C|$ is the number of elements in the set $C$. So we can verify the solution is valid or not in $O\left(\binom{k}{2}|C|\right)$ time.\\
 So Set-Packing $\in$ NP.\\
 
-2. Independent-Set $\leq_p$ Set-Packing.\\
-We have known that the Independent-Set problem is NP-complete.\\
-Given a graph \( G = (V, E) \) and an integer \( k \), the Independent Set problem asks whether there exists a set of \( k \) vertices in \( G \) such that no two vertices in the set are adjacent.\\
+2. k-CLIQUE $\leq_p$ Set-Packing.\\
+We have known that the k-CLIQUE problem is NP-complete.\\
+For an instance of k-CLIQUE problem whose graph is $G$, we can construct an instance of Set-Packing.
+Let each node $v$ in graph $G$ to be a subset of $C$, every edge $(u,v)$ to be two subsets from $C$, so that the two subsets are disjoint.
 
 <1> "$\Rightarrow$":\\
-For an instance of Independent-Set problem, construct an instance of Set-Packing as follows:\\
-Let each node in the graph be a subset in the Set-Packing problem. For each node \( v \) in \( V \), create a subset \( S_v \) containing all the edges that are incident to \( v \) in \( G \). Specifically, \( S_v = \{e \in E \mid v \in e\} \).\\
-Since it is a yes instance of Independent-Set problem, there exists a set of \( k \) vertices in \( G \) such that no two vertices in the set are adjacent. This means that there exists a set of \( k \) subsets in the Set-Packing problem that are pairwise disjoint. So it is a yes instance of Set-Packing problem.\\
+If $C$ is a yes instance of Set-Packing problem, then we can construct a graph with the above methods, so that it is also a yes instance for the k-CLIQUE problem.
 
 <2> "$\Leftarrow$":\\
-For an instance of Set-Packing problem, construct an instance of Independent-Set as follows:\\
-Let each subset in the Set-Packing problem be a node in the graph. For each subset \( S_v \) in the Set-Packing problem, create a node \( v \) in the graph.\\
-Since it is a yes instance of Set-Packing problem, there exists a set of \( k \) subsets in the collection which are pairwise disjoint. This means that there exists a set of \( k \) vertices in \( G \) such that no two vertices in the set are adjacent. So it is a yes instance of Independent-Set problem.\\
+If $G$ is a yes-instance for the k-CLIQUE problem, then there must have a clique with $k$ vertices that are all connected, then all the corresponding $k$ subsets are disjoint, then it is a yes-instance to the Set-Packing problem.
 
 <3> Polynomial Time:\\
 The reduction constructs a subset for each vertex and assigns the incident edges to each subset, both of which can be accomplished in polynomial time relative to the size of \( V \) and \( E \).\\
 
 So we have proved that Independent Set $\leq_p$ Set-Packing.\\
 
-Since Independent-Set $\in$ NP-complete; Set-Packing $\in$ NP; Independent-Set $\leq_p$ Set-Packing.\\
+Since k-CLIQUE $\in$ NP-complete; Set-Packing $\in$ NP; k-CLIQUE $\leq_p$ Set-Packing.\\
 Therefore, Set-Packing $\in$ NP-complete.\\
 
 So above all, we have proved that Set-Packing is a NP-complete problem.

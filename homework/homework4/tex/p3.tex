@@ -9,32 +9,29 @@ Given a collection of subsets of $C$, and the integer $k$, we can visit each sub
 So the total time complexity is $O((k+1)|C|)$, which is polynomial.\\
 So Set-Cover $\in$ NP.\\
 
-2. Vertex-Cover $\leq_p$ Set-Cover.\\
-We can reduce Vertex-Cover to Set-Cover.\\
-Given a Vertex-Cover problem, we can construct a Set-Cover problem.\\
-Given a graph $G=(V,E)$, we can construct a set $C$ which contains all the edges in $E$.\\
-For each vertex $v \in V$, we can construct a subset $C_i$ which contains all the edges incident to $v$.\\
+2. 3-SAT $\leq_p$ Set-Cover.\\
+We can reduce 3-SAT to Set-Cover.\\
+Given a 3-SAT problem, we can construct a Set-Cover problem.\\
+Let the 3-SAT problem has $x_1,\cdots,x_n$ variables, $C_1,\cdots,C_m$ clauses, each clause has 3 literals.\\
+We can construct the subsets:
+Let $S_{x_i}$ to be clauses $C_j$ that $x_i$ appears in $C_j$.\\
+Let $S_{\neg x_i}$ to be clauses $C_j$ that $\neg x_i$ appears in $C_j$.\\
+And we can set $k$ to be the number of variables, if we can cover all the clauses.
+
 
 <1> "$\Rightarrow$":\\
-Given a Vertex-Cover problem, we can construct a Set-Cover problem.\\
-Given a Vertex-Cover problem, we can construct a set $C$ which contains all the edges in $E$.\\
-For each vertex $v \in V$, it represents a subset $C_i$, and the edge $e$ connects to $v$ represents an element in $C_i$.\\
-Then we can prove that the Vertex-Cover problem has a solution if and only if the Set-Cover problem has a solution and the solution must have at most $k$ vertices.\\
+If 3-SAT has a yes instance, then each clause has at least one true literal. Choose the subsets corresponding to the literals that are true in the satisfying assignment. This selection covers all clauses, as each clause has at least one true literal by the definition of a satisfying assignment. So it is also a yes instance for the Set-Cover problem.
 
 <2> "$\Leftarrow$":\\
-If a Set-Cover problem has a solution, then the solution must have at most $k$ subsets.\\
-Then we can prove that the Vertex-Cover problem has a solution and the solution must have at most $k$ vertices.\\
-Let each subset $C_i$ in the solution corresponds to a vertex $v$ in the solution.\\
-And each element in $C_i$ corresponds to an edge $e$ incident to $v$ and a duplicate single node $v'$.\\
-Then we can prove that the Vertex-Cover problem has a solution if and only if the Set-Cover problem has a solution and the solution must have at most $k$ vertices.\\
+If Set-Cover has a yes instance, which means that we can cover all clauses with at most n subsets. So there exists a selection of literals that covers every clause. Assign true to the literals selected in the solution and false to their complements. So it is also a yes instance for the 3-SAT problem.
 
 <3> Polynomial Time:\\
-The construction of the Set-Cover problem from the Vertex-Cover problem costs $O(|V|+|E|)$ time.\\
+The construction of the Set-Cover problem from the 3-SAT problem costs polynomial with $|V|$ and $|E|$ time.\\
 Which is a polynomial time.\\
 
-So we have proved that Vertex-Cover $\leq_p$ Set-Cover.\\
+So we have proved that 3-SAT $\leq_p$ Set-Cover.\\
 
-Since Vertex-Cover $\in$ NP-complete; Set-Cover $\in$ NP; Vertex-Cover $\leq_p$ Set-Cover.\\
+Since 3-SAT $\in$ NP-complete; Set-Cover $\in$ NP; 3-SAT $\leq_p$ Set-Cover.\\
 Therefore, Set-Cover $\in$ NP-complete.\\
 
 So above all, we have proved that Set-Cover is a NP-complete problem.

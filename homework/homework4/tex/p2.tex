@@ -12,14 +12,12 @@ So Stingy-SAT $\in$ NP.\\
 
 2. SAT $\leq_p$ Stingy-SAT.\\
 We can reduce SAT to Stingy-SAT.\\
-Given a SAT problem, we additionally check whether the number of variables set to true is no more than \(k\).\\
 
 <1> "$\Rightarrow$":\\
-If the SAT problem with firmula $\phi$ with $k$ variables is satisfied, then the number of variables set to true is no more than \(k\).\\
-So the Stingy-SAT $(\phi,k)$ is satisfied.\\
+Since there are at most $n$ variables in a formula $\phi$. So for a yes instance of SAT, we can set $k=n$, then it is also a yes instance for the Stingy-SAT $(\phi,n)$.\\
 
 <2> "$\Leftarrow$":\\
-If the Stingy-SAT $(\phi,k)$ is satisfied, then without the constrains of $k$, the SAT problem is also satisfied.\\
+For a yes instance of the Stingy-SAT $(\phi,k)$, then without the constrains of $k$, the SAT problem with $\phi$ has less constrains, which is also a yes instance for SAT problem.\\
 
 <3> Polynomial Time:\\
 The construction only needs to check the number of variables set to true, which is in $O(n)$ time.\\
