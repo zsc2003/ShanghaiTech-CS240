@@ -1,0 +1,37 @@
+\problem{}
+Suppose you have $n$ coins, where the $i$'th coin has a size $c_i > 0$, and many piggy banks, each with a uniform capacity \(V\), such that \(V \geq \max(c_i)\).  You want to place all the coins into the minimum number of piggy banks.  To do this you use the following greedy strategy.
+
+Start with one active piggy bank.  Then, sequentially go through the coins, attempting to place each coin into any active piggy bank where it fits. If a coin does not fit into any active piggy bank, take a new piggy bank and make it active.  The algorithm is shown below.  Prove this algorithm is a 2-approximation, i.e. it uses at most two times the minimum number of piggy banks needed for all the coins.
+
+\begin{algorithm}
+\caption{Piggy Bank Coin Packing}
+\begin{algorithmic}[1]
+\State \textbf{Input:} Sizes of coins \(c_1, c_2, \ldots, c_n\); size of piggy bank \(V\)
+\State \textbf{Output:} Number of piggy banks used
+
+\State Initialize \(b \leftarrow 1\) \Comment{current number of active piggy banks}
+\State Initialize \(P_1, P_2, \ldots \leftarrow 0\) \Comment{space used in each piggy bank}
+\For{\(i = 1\) to \(n\)}
+    \If{\(\exists j \leq b\) such that \(P_j + c_i \leq V\)}
+        \State Choose any \(j\) with \(P_j + c_i \leq V\)
+        \State \(P_j \leftarrow P_j + c_i\) \Comment{put \(c_i\) in \(j\)-th active piggy bank}
+    \Else
+        \State \(b \leftarrow b + 1\)
+        \State \(P_b \leftarrow c_i\) \Comment{open a new piggy bank and put \(c_i\) in it}
+    \EndIf
+\EndFor
+\end{algorithmic}
+\end{algorithm}
+
+\solution{}
+
+
+
+
+
+
+
+
+
+
+\newpage
