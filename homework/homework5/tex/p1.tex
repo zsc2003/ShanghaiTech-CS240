@@ -2,14 +2,23 @@
 Suppose you have $2n$ balls and 2 bins.  For each ball, you throw it randomly into one of the bins.  Let $X_1$ and $X_2$ denote the number of balls in the two bins after this process.  Prove that for any  $\varepsilon>0$,  there is a constant  $c>0$  such that the probability $\operatorname{Pr}\left[X_{1}-X_{2}>c \sqrt{n}\right] \leq \varepsilon.$
 
 \solution{}
+Since we are given that each ball independently selects one of the two bins, both bins equally likely. So we can define the indicators $\mathbb{I}_i$ to represent the whether the $i$-th ball is in the first bin, i.e.
+$$\mathbb{I}_i=\begin{cases}1,\text{the $i$-th ball is in the first bin}\\0,\text{the $i$-th ball is in the second bin}\end{cases}$$
 
+And from the information above, we can get that  all indicators are independent. i.e. $\mathbb{I}_i \stackrel{i.i.d}{\sim} \text{Bern}\left(\dfrac{1}{2}\right)$.
+So $\mathbb{E}(\mathbb{I}_i)=\dfrac{1}{2}$, $\text{Var}(\mathbb{I}_i)=\dfrac{1}{4}$.
 
+Then we can define the number of balls in the first bin as $X_1=\sum\limits_{i=1}^{2n}\mathbb{I}_i$, and the number of balls in the second bin as $X_2=2n-X_1$.\\
+Since the indicators are independent, so the expectation and variance both has the linearity property, i.e.
+$$\mathbb{E}(X_1)=\mathbb{E}\left(\sum\limits_{i=1}^{2n}\mathbb{I}_i\right)=\sum\limits_{i=1}^{2n}\mathbb{E}(\mathbb{I}_i)=\sum\limits_{i=1}^{2n}\dfrac{1}{2}=n$$
+$$\text{Var}(X_1)=\text{Var}\left(\sum\limits_{i=1}^{2n}\mathbb{I}_i\right)=\sum\limits_{i=1}^{2n}\text{Var}(\mathbb{I}_i)=\sum\limits_{i=1}^{2n}\dfrac{1}{4}=\dfrac{n}{2}$$
 
-
-
-
-
-
+From what we have learned, the Chebyshev's inequality is given by
+$$\Pr\left[|X-\mathbb{E}(X)|\geq a\right]\leq \dfrac{\text{Var}(X)}{a^2}$$
+So combine above, we have for any $\epsilon>0$, there is a constant $c=\sqrt{\dfrac{2}{\epsilon}}>0$, s.t.
+$$\Pr\left(X_1-X_2\geq c\sqrt{n}\right)=\Pr\left(2X_1-2n\geq c\sqrt{n}\right)=\Pr\left(X_1-n\geq \dfrac{c\sqrt{n}}{2}\right)=\Pr\left(X_1-\mathbb{E}(X_1)\geq \dfrac{c\sqrt{n}}{2}\right)$$
+$$\leq\Pr\left(\left|X_1-\mathbb{E}(X_1)\right|\geq \dfrac{c\sqrt{n}}{2}\right)\leq\dfrac{\frac{n}{2}}{\left(\frac{c\sqrt{n}}{2}\right)^2}=\dfrac{2}{c^2}=\epsilon$$
+So above all, we have proved that for any $\epsilon>0$, there is a constant $c=\sqrt{\dfrac{2}{\epsilon}}>0$ s.t. $\Pr\left[X_{1}-X_{2}>c \sqrt{n}\right] \leq \varepsilon.$
 
 
 
