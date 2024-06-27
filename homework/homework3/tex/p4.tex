@@ -27,18 +27,18 @@ As shown in Figure \ref{fig:p4}'s <2> part, we set edge from $i$ to $i'$ with ca
 
 If node $i$ and node $j$ have connections such as in <1>, then we set up edge from $i'$ to $j$ with capacity $e_{i,j}$, and similarly, an edge from $j'$ to $i$ with capacity $e_{i,j}$.
 
-2. We set up edges from $s$ to $s_i, i=1,2,\cdots,m$ with capacity $+\infty$.
+2. We set up edges from $s$ to $s_i, i=1,2,\cdots,m$ with capacity \textcolor{red}{1}.
 
 3. We set up edges from the boundary nodes $b_1',\cdots,b_{4n-4}'$ to $t$ with capacities $+\infty$.
 
 Then the graph is contrusted.
 
 Let $C=\max\left\{\max\{c_{i,j}\},D=\max\{v_i\}\right\}$\\
-From our construction methods, we can find the sink node $s$ is only sending flow to $s_1,\cdots,s_m$, 
+From our construction methods, we can find the sink node $s$ is only sending flow to $s_1,\cdots,s_m$,
 and the boundary nodes $b_j'$ recieves flow only from $b_j$.\\
 So we can just set the $+\infty$ to be $C$.\\
 
-With above construction, we can use the Ford-Fulkerson algorithm to find the maximum flow of the constructed graph. 
+With above construction, we can use the Ford-Fulkerson algorithm to find the maximum flow of the constructed graph.
 
 If the maximum flow is the number of paths the graph can have which suits the requirements.\\
 The time complexity is $O(n^4\log C)$.\\

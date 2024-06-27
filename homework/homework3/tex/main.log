@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999995 (TeX Live 2023) (preloaded format=xelatex 2024.3.6)  30 APR 2024 22:29
+This is XeTeX, Version 3.141592653-2.6-0.999995 (TeX Live 2023) (preloaded format=xelatex 2024.3.6)  27 JUN 2024 16:33
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -368,7 +368,8 @@ File: l3backend-xetex.def 2023-01-16 L3 backend support: XeTeX
 \g__pdf_backend_object_int=\count305
 \g__pdf_backend_annotation_int=\count306
 \g__pdf_backend_link_int=\count307
-) (./main.aux)
+)
+No file main.aux.
 \openout1 = `main.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 72.
@@ -381,7 +382,7 @@ LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 72.
 LaTeX Font Info:    ... okay on input line 72.
 LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 72.
 LaTeX Font Info:    Trying to load font information for TS1+cmr on input line 72.
- (c:/texlive/2023/texmf-dist/tex/latex/base/ts1cmr.fd
+(c:/texlive/2023/texmf-dist/tex/latex/base/ts1cmr.fd
 File: ts1cmr.fd 2022/07/10 v2.5l Standard LaTeX font definitions
 )
 LaTeX Font Info:    ... okay on input line 72.
@@ -460,13 +461,16 @@ LaTeX Font Info:    ... okay on input line 72.
 LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 72.
 LaTeX Font Info:    ... okay on input line 72.
 Package hyperref Info: Link coloring OFF on input line 72.
- (./main.out) (./main.out)
 \@outlinefile=\write3
 \openout3 = `main.out'.
 
+
+
+Package hyperref Warning: Rerun to get /PageLabels entry.
+
 \c@lstlisting=\count308
 LaTeX Font Info:    Trying to load font information for U+msa on input line 74.
- (c:/texlive/2023/texmf-dist/tex/latex/amsfonts/umsa.fd
+(c:/texlive/2023/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
 LaTeX Font Info:    Trying to load font information for U+msb on input line 74.
@@ -475,6 +479,9 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ) [1
 
 ] (./p1.tex
+
+LaTeX Warning: Reference `alg:unique_cut' on page 2 undefined on input line 15.
+
 Package hyperref Info: bookmark level for unknown algorithm defaults to 0 on input line 18.
 
 Underfull \hbox (badness 10000) in paragraph at lines 34--35
@@ -484,6 +491,10 @@ Underfull \hbox (badness 10000) in paragraph at lines 34--35
 [2]) (./p2.tex
 File: ../fig/p2.png Graphic file (type bmp)
 <../fig/p2.png>
+
+
+LaTeX Warning: Reference `fig:p2' on page 3 undefined on input line 12.
+
 
 Underfull \hbox (badness 10000) in paragraph at lines 14--20
 
@@ -508,6 +519,10 @@ Underfull \hbox (badness 10000) in paragraph at lines 30--34
 File: ../fig/p3.png Graphic file (type bmp)
 <../fig/p3.png>
 
+
+LaTeX Warning: Reference `fig:p3' on page 5 undefined on input line 11.
+
+
 Underfull \hbox (badness 10000) in paragraph at lines 13--16
 
  []
@@ -529,7 +544,14 @@ Underfull \hbox (badness 10000) in paragraph at lines 2--3
 
 File: ../fig/p4.png Graphic file (type bmp)
 <../fig/p4.png>
+
+LaTeX Warning: Reference `fig:p4' on page 7 undefined on input line 14.
+
 [7]
+
+LaTeX Warning: Reference `fig:p4' on page 8 undefined on input line 26.
+
+
 Underfull \hbox (badness 10000) in paragraph at lines 36--40
 
  []
@@ -595,14 +617,26 @@ Underfull \hbox (badness 10000) in paragraph at lines 39--42
  []
 
 [11]) (./main.aux)
-Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: D19061D996EB016DD43DA58FE1147384;630.
+
+LaTeX Warning: There were undefined references.
+
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
+
+Package rerunfilecheck Warning: File `main.out' has changed.
+(rerunfilecheck)                Rerun to get outlines right
+(rerunfilecheck)                or use package `bookmark'.
+
+Package rerunfilecheck Info: Checksums for `main.out':
+(rerunfilecheck)             Before: <no file>
+(rerunfilecheck)             After:  D19061D996EB016DD43DA58FE1147384;630.
  ) 
 Here is how much of TeX's memory you used:
- 13086 strings out of 476683
- 199327 string characters out of 5807576
+ 13079 strings out of 476683
+ 199271 string characters out of 5807576
  1854012 words of memory out of 5000000
- 33111 multiletter control sequences out of 15000+600000
+ 33110 multiletter control sequences out of 15000+600000
  519071 words of font info for 69 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
  72i,6n,76p,699b,340s stack positions out of 10000i,1000n,20000p,200000b,200000s
